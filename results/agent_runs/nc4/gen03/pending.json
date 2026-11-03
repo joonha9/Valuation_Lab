@@ -1,0 +1,484 @@
+[
+ {
+  "id": "g03-01",
+  "generation": 3,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:31:31",
+  "name": "g03-01 L2 growth-ROIC twins with gross-margin intangibles proxy",
+  "mechanism": "Firms with high gross margins typically expense large amounts of brand, sales and R&D investment through SG&A, which depresses reported EBITDA relative to economic earnings and so raises EV/EBITDA. Adding gross margin to the growth, ROIC, leverage and size match of the best L2 recipe should pair firms with similar hidden intangible investment, removing a systematic source of EV/EBITDA error.",
+  "prediction": "Median error at or below 0.327 and beats the industry median in at least 3 of 4 years with 100% coverage.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "gross_margin": 0.5,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "hash": "c5ff065f18",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "g03-01 L2 growth-ROIC twins with gross-margin intangibles proxy",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "gross_margin": 0.5,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "compact": "EV/EBITDA | screen same industry_l2 | rank sales_growth_1y 1, roic 1, gross_margin 0.5, net_debt_to_ebitda 0.5, log_sales 0.5 | k=8, median, min_peers=5"
+ },
+ {
+  "id": "g03-02",
+  "generation": 3,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:31:31",
+  "name": "g03-02 Deep-L3 first, then L2, then cross-section, fundamental ranking",
+  "mechanism": "Narrow 3-digit peers share product markets and demand shocks, but only help when the industry is deep enough that fundamental ranking can still find close twins. Requiring at least 10 L3 candidates before using them, and otherwise falling back to L2 and then the whole cross-section, uses the narrow industry only where it adds information while ranking on growth, ROIC, leverage and size.",
+  "prediction": "Median error below 0.330 and beats the industry median in at least 3 of 4 years.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l3"
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 10,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "c7a73c3d72",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "g03-02 Deep-L3 first, then L2, then cross-section, fundamental ranking",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l3"
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 10,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l3 | rank sales_growth_1y 1, roic 1, net_debt_to_ebitda 0.5, log_sales 0.5 | k=8, median, min_peers=10 | fallback [same industry_l2] -> []"
+ },
+ {
+  "id": "g03-03",
+  "generation": 3,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:31:31",
+  "name": "g03-03 L2 larger peer set with margin as a risk control",
+  "mechanism": "EV/EBITDA peer medians are noisy with only 8 peers; within a 2-digit industry a larger set of 12 fundamental neighbours should reduce idiosyncratic valuation noise. Adding EBITDA margin as a light ranking term matches operating leverage, since low-margin firms carry more earnings risk per dollar of EBITDA and warrant lower multiples.",
+  "prediction": "Mean error below 0.488 and median error no worse than 0.330, beating the industry median in all 4 years.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "ebitda_margin": 0.5,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 12,
+   "agg": "median",
+   "min_peers": 6,
+   "fallback": [
+    []
+   ]
+  },
+  "hash": "c01be19da2",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "g03-03 L2 larger peer set with margin as a risk control",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "ebitda_margin": 0.5,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 12,
+   "agg": "median",
+   "min_peers": 6,
+   "fallback": [
+    []
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l2 | rank sales_growth_1y 1, roic 1, ebitda_margin 0.5, net_debt_to_ebitda 0.5, log_sales 0.5 | k=12, median, min_peers=6 | fallback []"
+ },
+ {
+  "id": "g03-04",
+  "generation": 3,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:31:31",
+  "name": "g03-04 L2 tight margin band with ROIC refinement",
+  "mechanism": "EV/Sales equals EBITDA margin times EV/EBITDA, so a tighter \u00b13pp margin band inside a 2-digit industry pins down the first factor more precisely. Ranking on ROIC alongside growth matches the reinvestment efficiency that drives the EV/EBITDA factor, and cascading fallbacks to cross-industry bands keep coverage.",
+  "prediction": "Median error below 0.391 and beats the industry median in all 4 years with 100% coverage.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "gross_margin": 1,
+    "roic": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.06
+      }
+     }
+    ]
+   ]
+  },
+  "hash": "01f85d9e5e",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "g03-04 L2 tight margin band with ROIC refinement",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "gross_margin": 1,
+    "roic": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.06
+      }
+     }
+    ]
+   ]
+  },
+  "compact": "EV/Sales | screen same industry_l2, band ebitda_margin\u00b10.03 | rank ebitda_margin 2, sales_growth_1y 1, gross_margin 1, roic 0.5 | k=8, median, min_peers=5 | fallback [band ebitda_margin\u00b10.03] -> [band ebitda_margin\u00b10.06]"
+ },
+ {
+  "id": "g03-05",
+  "generation": 3,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:31:31",
+  "name": "g03-05 L3 margin band cascading to L2 and cross-industry",
+  "mechanism": "Within a margin band, the residual EV/Sales dispersion comes from growth and risk, which narrow 3-digit industries hold more constant than 2-digit ones. Using L3 peers inside the \u00b14pp margin band when at least 5 exist, and otherwise cascading to L2 and then all industries with the same band, combines the closest business models with guaranteed profitability comparability.",
+  "prediction": "Median error below 0.400 and beats the industry median in all 4 years.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l3"
+    },
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.04
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "gross_margin": 1,
+    "capex_intensity": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.04
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.04
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "c9b963ddff",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "g03-05 L3 margin band cascading to L2 and cross-industry",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l3"
+    },
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.04
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "gross_margin": 1,
+    "capex_intensity": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.04
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.04
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen same industry_l3, band ebitda_margin\u00b10.04 | rank ebitda_margin 2, sales_growth_1y 1, gross_margin 1, capex_intensity 0.5 | k=8, median, min_peers=5 | fallback [same industry_l2, band ebitda_margin\u00b10.04] -> [band ebitda_margin\u00b10.04] -> []"
+ },
+ {
+  "id": "g03-06",
+  "generation": 3,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:31:31",
+  "name": "g03-06 L2 double band on margin and growth",
+  "mechanism": "After margin, expected growth is the second factor of EV/Sales through its effect on EV/EBITDA, and a hard growth band prevents a few fast-growing or shrinking firms from entering the peer set purely on margin similarity. Requiring both EBITDA margin within \u00b14pp and one-year growth within \u00b115pp in a 2-digit industry, with fallbacks that relax the growth band first, should match both factors of the identity.",
+  "prediction": "Median error below 0.395 and beats the industry median in all 4 years with coverage of at least 99%.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.04
+     }
+    },
+    {
+     "band": {
+      "var": "sales_growth_1y",
+      "width": 0.15
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "gross_margin": 1,
+    "net_debt_to_ebitda": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.04
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.04
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "c288a7fbd3",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "g03-06 L2 double band on margin and growth",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.04
+     }
+    },
+    {
+     "band": {
+      "var": "sales_growth_1y",
+      "width": 0.15
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "gross_margin": 1,
+    "net_debt_to_ebitda": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.04
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.04
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen same industry_l2, band ebitda_margin\u00b10.04, band sales_growth_1y\u00b10.15 | rank ebitda_margin 2, sales_growth_1y 1, gross_margin 1, net_debt_to_ebitda 0.5 | k=8, median, min_peers=5 | fallback [same industry_l2, band ebitda_margin\u00b10.04] -> [band ebitda_margin\u00b10.04] -> []"
+ }
+]

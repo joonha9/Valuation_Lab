@@ -1,0 +1,580 @@
+[
+ {
+  "id": "g04-01",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T21:40:36",
+  "name": "sales_rnd_adjusted_margin_box",
+  "mechanism": "R&D is expensed, so two firms with the same reported EBITDA margin can have very different economic cash margins: the R&D-heavy firm is investing part of its margin in intangible capital that markets capitalize into value, which raises its EV/Sales. A hard band on R&D intensity next to the EBITDA-margin band puts peers at the same reported margin AND the same hidden investment rate, and ranking on growth, gross margin and size then matches duration, pricing power and the risk premium. Fallbacks drop the R&D constraint (for firms with no reported R&D) before widening the margin band.",
+  "prediction": "Beats the industry median EV/Sales in all 4 years with median error at or below 0.40, and does at least as well as g03-06 on R&D-intensive firms (rnd_intensity above 0.05).",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "rnd_intensity",
+      "width": 0.03
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "gross_margin": 1,
+    "log_sales": 0.5
+   },
+   "k": 12,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.06
+      }
+     }
+    ]
+   ]
+  },
+  "hash": "c150c9c750",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "sales_rnd_adjusted_margin_box",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "rnd_intensity",
+      "width": 0.03
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "gross_margin": 1,
+    "log_sales": 0.5
+   },
+   "k": 12,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.06
+      }
+     }
+    ]
+   ]
+  },
+  "compact": "EV/Sales | screen band ebitda_margin\u00b10.03, band rnd_intensity\u00b10.03 | rank sales_growth_1y 1, gross_margin 1, log_sales 0.5 | k=12, median, min_peers=5 | fallback [band ebitda_margin\u00b10.03] -> [band ebitda_margin\u00b10.06]"
+ },
+ {
+  "id": "g04-02",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T21:40:36",
+  "name": "sales_dupont_roa_box",
+  "mechanism": "EV/Sales equals EV/Assets divided by asset turnover, and EBITDA margin times asset turnover is the pre-tax cash return on assets. Hard bands on both margin and turnover fix how much cash each dollar of sales produces and how much capital stands behind each dollar of sales, so peers share the same return on the asset base whatever their SIC code. Ranking on growth, ROIC and debt-to-assets then matches duration, value creation on new capital and financial risk.",
+  "prediction": "Beats the industry median EV/Sales in all 4 years with median error at or below 0.40; coverage at least 90%.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "asset_turnover",
+      "width": 0.25
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "debt_to_assets": 0.5
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.06
+      }
+     }
+    ]
+   ]
+  },
+  "hash": "b9ab54a036",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "sales_dupont_roa_box",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "asset_turnover",
+      "width": 0.25
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "debt_to_assets": 0.5
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.06
+      }
+     }
+    ]
+   ]
+  },
+  "compact": "EV/Sales | screen band ebitda_margin\u00b10.03, band asset_turnover\u00b10.25 | rank sales_growth_1y 1, roic 1, debt_to_assets 0.5 | k=10, median, min_peers=5 | fallback [band ebitda_margin\u00b10.03] -> [band ebitda_margin\u00b10.06]"
+ },
+ {
+  "id": "g04-03",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T21:40:36",
+  "name": "sales_operating_leverage_box",
+  "mechanism": "Two firms with the same EBITDA margin but different gross margins have different cost structures: a high-gross-margin firm spends heavily on discretionary SG&A (marketing, customer acquisition) that is partly investment and gives strong operating leverage, so investors expect margin expansion and pay more per dollar of sales. Hard bands on both gross margin and EBITDA margin fix the current cash margin and the cost structure behind it, and ranking on growth, size and capex intensity matches duration, risk premium and reinvestment needs.",
+  "prediction": "Beats the industry median EV/Sales in all 4 years and has median error at or below 0.40, with lower mean error than g01-03 (0.672).",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "gross_margin",
+      "width": 0.06
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "log_sales": 1,
+    "capex_intensity": 0.5
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     },
+     {
+      "band": {
+       "var": "gross_margin",
+       "width": 0.12
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.05
+      }
+     }
+    ]
+   ]
+  },
+  "hash": "241d725602",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "sales_operating_leverage_box",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "gross_margin",
+      "width": 0.06
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "log_sales": 1,
+    "capex_intensity": 0.5
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     },
+     {
+      "band": {
+       "var": "gross_margin",
+       "width": 0.12
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.05
+      }
+     }
+    ]
+   ]
+  },
+  "compact": "EV/Sales | screen band ebitda_margin\u00b10.03, band gross_margin\u00b10.06 | rank sales_growth_1y 1, log_sales 1, capex_intensity 0.5 | k=10, median, min_peers=5 | fallback [band ebitda_margin\u00b10.03, band gross_margin\u00b10.12] -> [band ebitda_margin\u00b10.05]"
+ },
+ {
+  "id": "g04-04",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T21:40:36",
+  "name": "ebitda_rnd_expensing_regime",
+  "mechanism": "Because R&D is expensed, R&D-intensive firms report EBITDA that understates their pre-investment cash flow and carry growth options that the current EBITDA does not reflect, so they trade at systematically higher EV/EBITDA than low-R&D firms in the same broad industry. A hard band on R&D intensity inside the 2-digit industry keeps peers in the same expensing and growth-option regime, and ranking on growth, ROIC and net leverage matches the standard Gordon-model drivers; firms without R&D data fall back to plain industry peers.",
+  "prediction": "Median error at or below 0.330 and beats the industry median in at least 3 of 4 years.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "rnd_intensity",
+      "width": 0.03
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "net_debt_to_ebitda": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l3"
+     }
+    ],
+    [
+     {
+      "same": "industry_l2"
+     }
+    ]
+   ]
+  },
+  "hash": "e5f4a1629b",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "ebitda_rnd_expensing_regime",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "rnd_intensity",
+      "width": 0.03
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "net_debt_to_ebitda": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l3"
+     }
+    ],
+    [
+     {
+      "same": "industry_l2"
+     }
+    ]
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l2, band rnd_intensity\u00b10.03 | rank sales_growth_1y 1, roic 1, net_debt_to_ebitda 0.5 | k=8, median, min_peers=5 | fallback [same industry_l3] -> [same industry_l2]"
+ },
+ {
+  "id": "g04-05",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T21:40:36",
+  "name": "ebitda_margin_cycle_position",
+  "mechanism": "EBITDA margins mean-revert, so a firm whose margin is depressed relative to industry norms trades at a high EV/EBITDA (the market prices in a recovery), while a firm at peak margins trades at a low one. A hard band on EBITDA margin inside the 3-digit industry puts peers at the same point in the margin cycle, so they share the same expected recovery or fade; ranking on growth, ROIC and net leverage then matches the remaining value drivers.",
+  "prediction": "Median error at or below 0.330, beats the industry median in at least 3 of 4 years, and lower mean error than the industry median baseline (0.513).",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l3"
+    },
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.05
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "net_debt_to_ebitda": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.05
+      }
+     }
+    ],
+    [
+     {
+      "same": "industry_l2"
+     }
+    ]
+   ]
+  },
+  "hash": "3ec7ed926c",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "ebitda_margin_cycle_position",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l3"
+    },
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.05
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "net_debt_to_ebitda": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.05
+      }
+     }
+    ],
+    [
+     {
+      "same": "industry_l2"
+     }
+    ]
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l3, band ebitda_margin\u00b10.05 | rank sales_growth_1y 1, roic 1, net_debt_to_ebitda 0.5 | k=8, median, min_peers=5 | fallback [same industry_l2, band ebitda_margin\u00b10.05] -> [same industry_l2]"
+ },
+ {
+  "id": "g04-06",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T21:40:36",
+  "name": "ebitda_pricing_power_moat",
+  "mechanism": "Gross margin measures pricing power and product differentiation, which sets how long a firm can earn above its cost of capital (the competitive-advantage period). At equal near-term growth, a longer advantage period means a higher EV/EBITDA, and a broad 2-digit industry mixes branded and commodity producers. A gross-margin band inside the 2-digit industry keeps peers in the same competitive position, and ranking on growth, ROIC, net leverage and size matches the remaining drivers.",
+  "prediction": "Median error at or below 0.330 and beats the industry median in all 4 years.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "gross_margin",
+      "width": 0.08
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "gross_margin",
+       "width": 0.15
+      }
+     }
+    ],
+    [
+     {
+      "same": "industry_l2"
+     }
+    ]
+   ]
+  },
+  "hash": "183aae447c",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "ebitda_pricing_power_moat",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "gross_margin",
+      "width": 0.08
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "gross_margin",
+       "width": 0.15
+      }
+     }
+    ],
+    [
+     {
+      "same": "industry_l2"
+     }
+    ]
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l2, band gross_margin\u00b10.08 | rank sales_growth_1y 1, roic 1, net_debt_to_ebitda 0.5, log_sales 0.5 | k=8, median, min_peers=5 | fallback [same industry_l2, band gross_margin\u00b10.15] -> [same industry_l2]"
+ }
+]

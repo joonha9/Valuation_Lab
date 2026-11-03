@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Growth and ROIC peers",
+    "short": "Growth + ROIC",
+    "mechanism": "Within an industry, firms with similar growth and returns on capital share the discount rate and growth expectations that set EV/EBITDA.",
+    "multiple": "EV/EBITDA",
+    "filters": [{"same": "industry_l3"}],
+    "rank": {"sales_growth_3y": 0.5, "roic": 0.5},
+    "k": 8,
+    "agg": "median",
+    "min_peers": 3,
+    "fallback": [[{"same": "industry_l2"}]]
+  },
+  {
+    "name": "Size and margin peers",
+    "short": "Size + margin",
+    "mechanism": "Practitioner default: pick sector peers of similar scale and profitability.",
+    "multiple": "EV/EBITDA",
+    "filters": [{"same": "industry_l2"}],
+    "rank": {"log_sales": 0.5, "ebitda_margin": 0.5},
+    "k": 10,
+    "agg": "median",
+    "min_peers": 3
+  },
+  {
+    "name": "Margin-matched sales peers",
+    "short": "Margin + growth",
+    "mechanism": "EV/Sales mostly prices future margins, so peers should match on margin first and growth second.",
+    "multiple": "EV/Sales",
+    "filters": [{"same": "industry_l3"}],
+    "rank": {"ebitda_margin": 0.6, "sales_growth_3y": 0.4},
+    "k": 8,
+    "agg": "median",
+    "min_peers": 3,
+    "fallback": [[{"same": "industry_l2"}]]
+  }
+]

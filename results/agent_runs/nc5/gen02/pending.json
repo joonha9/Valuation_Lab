@@ -1,0 +1,424 @@
+[
+ {
+  "id": "g02-01",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:28:02",
+  "name": "g02-01 EV/Sales margin band + growth + R&D intensity",
+  "mechanism": "EV/Sales is roughly EV/EBITDA times EBITDA margin, so firms with near-identical margins share most of the sales-multiple variation regardless of industry. Within that margin band, growth and R&D intensity capture the remaining value driver: R&D is expensed, so high-R&D firms carry depressed current margins relative to their long-run cash-flow potential and trade at higher sales multiples than their reported margin suggests.",
+  "prediction": "Median error at or below 0.40 and beats the industry median EV/Sales in all 4 exploration years.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.04
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "gross_margin": 0.7,
+    "rnd_intensity": 0.6
+   },
+   "k": 15,
+   "agg": "harmonic_mean",
+   "min_peers": 6,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.08
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "dfe88a9e40",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "g02-01 EV/Sales margin band + growth + R&D intensity",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.04
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "gross_margin": 0.7,
+    "rnd_intensity": 0.6
+   },
+   "k": 15,
+   "agg": "harmonic_mean",
+   "min_peers": 6,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.08
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen band ebitda_margin\u00b10.04 | rank ebitda_margin 2, sales_growth_1y 1, gross_margin 0.7, rnd_intensity 0.6 | k=15, harmonic_mean, min_peers=6 | fallback [band ebitda_margin\u00b10.08] -> []"
+ },
+ {
+  "id": "g02-02",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:28:02",
+  "name": "g02-02 EV/Sales broad industry within margin band",
+  "mechanism": "Margin explains most of EV/Sales, but industry membership adds shared risk, cyclicality and terminal-growth expectations. Requiring peers to share a 2-digit SIC code and lie within a moderate EBITDA-margin band combines both sources of similarity, falling back to a pure cross-industry margin band when the industry is thin.",
+  "prediction": "Median error below 0.42 and beats the industry median EV/Sales in all 4 exploration years.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.08
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "asset_turnover": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.05
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "7b002ec86c",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "g02-02 EV/Sales broad industry within margin band",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.08
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "asset_turnover": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.05
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen same industry_l2, band ebitda_margin\u00b10.08 | rank ebitda_margin 2, sales_growth_1y 1, asset_turnover 0.5 | k=8, median, min_peers=5 | fallback [band ebitda_margin\u00b10.05] -> []"
+ },
+ {
+  "id": "g02-03",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:28:02",
+  "name": "g02-03 EV/Sales margin band with risk and size",
+  "mechanism": "Among firms with similar EBITDA margins, the sales multiple still depends on the discount rate applied to those cash flows. Net leverage and firm size proxy for financial risk and for liquidity and diversification premia, so matching on them within a margin band should align discount rates as well as profitability.",
+  "prediction": "Median error below 0.41 and beats the industry median EV/Sales in at least 3 of 4 exploration years.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.05
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 20,
+   "agg": "median",
+   "min_peers": 6,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.1
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "c129d2de24",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "g02-03 EV/Sales margin band with risk and size",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.05
+     }
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 2,
+    "sales_growth_1y": 1,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 20,
+   "agg": "median",
+   "min_peers": 6,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.1
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen band ebitda_margin\u00b10.05 | rank ebitda_margin 2, sales_growth_1y 1, net_debt_to_ebitda 0.5, log_sales 0.5 | k=20, median, min_peers=6 | fallback [band ebitda_margin\u00b10.1] -> []"
+ },
+ {
+  "id": "g02-04",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:28:02",
+  "name": "g02-04 EV/EBITDA cash conversion plus profitability in L2",
+  "mechanism": "EV/EBITDA depends on how much EBITDA converts to free cash flow (capex intensity), on growth, and on risk (leverage, size). Adding EBITDA margin captures competitive position and durability of earnings, so 2-digit industry peers matched on all of these should share both the cash-conversion and the risk components of the multiple.",
+  "prediction": "Median error at or below 0.322 and beats the industry median EV/EBITDA in all 4 exploration years.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    }
+   ],
+   "rank": {
+    "capex_intensity": 1,
+    "ebitda_margin": 0.8,
+    "sales_growth_1y": 0.7,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.4
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    []
+   ]
+  },
+  "hash": "d99d034131",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "g02-04 EV/EBITDA cash conversion plus profitability in L2",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    }
+   ],
+   "rank": {
+    "capex_intensity": 1,
+    "ebitda_margin": 0.8,
+    "sales_growth_1y": 0.7,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.4
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    []
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l2 | rank capex_intensity 1, ebitda_margin 0.8, sales_growth_1y 0.7, net_debt_to_ebitda 0.5, log_sales 0.4 | k=10, median, min_peers=5 | fallback []"
+ },
+ {
+  "id": "g02-05",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:28:02",
+  "name": "g02-05 EV/EBITDA size band, ROIC and reinvestment",
+  "mechanism": "In a growing-perpetuity model, EV/EBITDA rises with growth and with return on invested capital because high-ROIC firms need less reinvestment per unit of growth; capex intensity measures that reinvestment directly. Restricting to similar-size firms in the same broad industry aligns discount rates, and R&D intensity flags intangible investment not captured by capex.",
+  "prediction": "Median error below 0.325 and beats the industry median EV/EBITDA in at least 3 of 4 exploration years.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "log_sales",
+      "width": 1.5
+     }
+    }
+   ],
+   "rank": {
+    "roic": 1,
+    "capex_intensity": 0.8,
+    "sales_growth_1y": 0.6,
+    "rnd_intensity": 0.4
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "2cef5107cf",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "g02-05 EV/EBITDA size band, ROIC and reinvestment",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "log_sales",
+      "width": 1.5
+     }
+    }
+   ],
+   "rank": {
+    "roic": 1,
+    "capex_intensity": 0.8,
+    "sales_growth_1y": 0.6,
+    "rnd_intensity": 0.4
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l2, band log_sales\u00b11.5 | rank roic 1, capex_intensity 0.8, sales_growth_1y 0.6, rnd_intensity 0.4 | k=10, median, min_peers=5 | fallback [same industry_l2] -> []"
+ },
+ {
+  "id": "g02-06",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:28:02",
+  "name": "g02-06 EV/EBITDA narrow industry with cash conversion and leverage",
+  "mechanism": "Firms in the same 3-digit industry share production technology and demand drivers, so their EV/EBITDA differences mostly reflect capital needs, leverage risk and growth. Ranking narrow-industry peers on capex intensity, net debt/EBITDA and growth, with a trimmed mean to limit outlier multiples, should improve on the plain L3 industry median while falling back to L2 when peers are scarce.",
+  "prediction": "Median error below 0.330 and beats the industry median EV/EBITDA in at least 3 of 4 exploration years.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l3"
+    }
+   ],
+   "rank": {
+    "capex_intensity": 1,
+    "net_debt_to_ebitda": 0.7,
+    "sales_growth_1y": 0.7,
+    "ebitda_margin": 0.4
+   },
+   "k": 8,
+   "agg": "trimmed_mean",
+   "min_peers": 6,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "7ca4980a11",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "g02-06 EV/EBITDA narrow industry with cash conversion and leverage",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l3"
+    }
+   ],
+   "rank": {
+    "capex_intensity": 1,
+    "net_debt_to_ebitda": 0.7,
+    "sales_growth_1y": 0.7,
+    "ebitda_margin": 0.4
+   },
+   "k": 8,
+   "agg": "trimmed_mean",
+   "min_peers": 6,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l3 | rank capex_intensity 1, net_debt_to_ebitda 0.7, sales_growth_1y 0.7, ebitda_margin 0.4 | k=8, trimmed_mean, min_peers=6 | fallback [same industry_l2] -> []"
+ }
+]

@@ -1,0 +1,580 @@
+[
+ {
+  "id": "g04-01",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:07:03",
+  "name": "ebitda_growth_roic_box_crosssector",
+  "mechanism": "In a steady-state value-driver model, EV/EBITDA is set by growth and by the return earned on the reinvestment that funds it (ROIC), and those two inputs mean the same thing in any sector. A hard two-way box on 1-year sales growth and ROIC, drawn across all sectors, finds peers with the same growth and return from a much larger pool than any SIC group. Inside the box, R&D intensity, capex intensity and gross margin describe how much of reported EBITDA is real free cash flow (expensed intangibles versus capital spending), so these replace the industry label.",
+  "prediction": "Median error below 0.330 and beats the L3/L2 industry median in at least 3 of 4 exploration years with coverage above 95%.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "band": {
+      "var": "sales_growth_1y",
+      "width": 0.1
+     }
+    },
+    {
+     "band": {
+      "var": "roic",
+      "width": 0.05
+     }
+    }
+   ],
+   "rank": {
+    "rnd_intensity": 1,
+    "capex_intensity": 1,
+    "gross_margin": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "sales_growth_1y",
+       "width": 0.1
+      }
+     }
+    ],
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "b2675eb097",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "ebitda_growth_roic_box_crosssector",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "band": {
+      "var": "sales_growth_1y",
+      "width": 0.1
+     }
+    },
+    {
+     "band": {
+      "var": "roic",
+      "width": 0.05
+     }
+    }
+   ],
+   "rank": {
+    "rnd_intensity": 1,
+    "capex_intensity": 1,
+    "gross_margin": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "sales_growth_1y",
+       "width": 0.1
+      }
+     }
+    ],
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/EBITDA | screen band sales_growth_1y\u00b10.1, band roic\u00b10.05 | rank rnd_intensity 1, capex_intensity 1, gross_margin 1 | k=10, median, min_peers=5 | fallback [same industry_l2, band sales_growth_1y\u00b10.1] -> [same industry_l2] -> []"
+ },
+ {
+  "id": "g04-02",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:07:03",
+  "name": "ebitda_l2_rnd_band",
+  "mechanism": "Because US GAAP expenses R&D, EBITDA understates economic earnings by roughly the R&D add-back, so firms with different R&D intensity in the same sector have mechanically different EV/EBITDA. Turning R&D intensity from a soft ranking weight into a hard band within the 2-digit sector removes this accounting distortion outright for every peer. Ranking the survivors on growth, ROIC and capex intensity then matches the growth, reinvestment efficiency and cash conversion of the remaining EBITDA.",
+  "prediction": "Beats the industry median in at least 3 of 4 years, with median error at or below 0.325.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "rnd_intensity",
+      "width": 0.03
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "capex_intensity": 1
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 4,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "32903f2b39",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "ebitda_l2_rnd_band",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    },
+    {
+     "band": {
+      "var": "rnd_intensity",
+      "width": 0.03
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "capex_intensity": 1
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 4,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l2, band rnd_intensity\u00b10.03 | rank sales_growth_1y 1, roic 1, capex_intensity 1 | k=8, median, min_peers=4 | fallback [same industry_l2] -> []"
+ },
+ {
+  "id": "g04-03",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:07:03",
+  "name": "ebitda_business_model_box_crosssector",
+  "mechanism": "Gross margin and R&D intensity together describe the business model (commodity processing versus branded or IP-driven) and how far expensed intangible investment pushes EBITDA below economic earnings. A hard box on both across all sectors gives peers whose EBITDA has the same accounting meaning without relying on SIC codes, which often lump very different business models together. Within the box, growth (weighted most), ROIC and capex intensity rank peers on the Gordon-style drivers of the multiple.",
+  "prediction": "Beats the industry median in at least 3 of 4 years; if SIC carries information beyond business-model traits, it will fall short of the L2-screened R&D-band recipe.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "band": {
+      "var": "gross_margin",
+      "width": 0.08
+     }
+    },
+    {
+     "band": {
+      "var": "rnd_intensity",
+      "width": 0.02
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 2,
+    "roic": 1,
+    "capex_intensity": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "gross_margin",
+       "width": 0.1
+      }
+     }
+    ],
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "743b006123",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "ebitda_business_model_box_crosssector",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "band": {
+      "var": "gross_margin",
+      "width": 0.08
+     }
+    },
+    {
+     "band": {
+      "var": "rnd_intensity",
+      "width": 0.02
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 2,
+    "roic": 1,
+    "capex_intensity": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     },
+     {
+      "band": {
+       "var": "gross_margin",
+       "width": 0.1
+      }
+     }
+    ],
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/EBITDA | screen band gross_margin\u00b10.08, band rnd_intensity\u00b10.02 | rank sales_growth_1y 2, roic 1, capex_intensity 1 | k=10, median, min_peers=5 | fallback [same industry_l2, band gross_margin\u00b10.1] -> [same industry_l2] -> []"
+ },
+ {
+  "id": "g04-04",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:07:03",
+  "name": "sales_fcf_margin_box",
+  "mechanism": "EV/Sales is the present value of future free-cash-flow margins, and FCF margin is roughly EBITDA margin less capex intensity. A hard box on both EBITDA margin and capex intensity across all sectors therefore fixes the FCF margin itself rather than only its gross component. Peers are then ranked on growth (weighted most), ROIC (how long growth creates value) and gross margin (how durable the margin is).",
+  "prediction": "Median error below 0.390 and beats the industry median in all 4 exploration years.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "capex_intensity",
+      "width": 0.03
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 2,
+    "roic": 1,
+    "gross_margin": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.06
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "bab7c45db8",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "sales_fcf_margin_box",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "capex_intensity",
+      "width": 0.03
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 2,
+    "roic": 1,
+    "gross_margin": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.06
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen band ebitda_margin\u00b10.03, band capex_intensity\u00b10.03 | rank sales_growth_1y 2, roic 1, gross_margin 1 | k=10, median, min_peers=5 | fallback [band ebitda_margin\u00b10.03] -> [band ebitda_margin\u00b10.06] -> []"
+ },
+ {
+  "id": "g04-05",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:07:03",
+  "name": "sales_cost_structure_box",
+  "mechanism": "Two firms with the same EBITDA margin can get there very differently: a high gross margin with heavy SG&A and R&D (spending that is discretionary and partly investment) or a thin gross margin with little overhead (a commodity cost structure). Investors capitalise the first kind of margin at a higher sales multiple because operating leverage and the investment buried in opex point to more future margin. A hard box on EBITDA margin and gross margin fixes both the profit level and how it is made, and growth, R&D intensity and asset turnover rank what is left.",
+  "prediction": "Beats the industry median in all 4 years with median error below 0.400.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "gross_margin",
+      "width": 0.1
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 2,
+    "rnd_intensity": 1,
+    "asset_turnover": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.06
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "638888c144",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "sales_cost_structure_box",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "gross_margin",
+      "width": 0.1
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 2,
+    "rnd_intensity": 1,
+    "asset_turnover": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.06
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen band ebitda_margin\u00b10.03, band gross_margin\u00b10.1 | rank sales_growth_1y 2, rnd_intensity 1, asset_turnover 1 | k=10, median, min_peers=5 | fallback [band ebitda_margin\u00b10.03] -> [band ebitda_margin\u00b10.06] -> []"
+ },
+ {
+  "id": "g04-06",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:07:03",
+  "name": "sales_ebit_margin_growth_box",
+  "mechanism": "EBIT margin subtracts depreciation, a rough proxy for the maintenance capex needed to keep sales going, so it is closer than EBITDA margin to the sustainable after-tax operating margin that a DCF capitalises into EV/Sales. A hard box on EBIT margin and 1-year growth across all sectors matches the two first-order drivers of the sales multiple on this cleaner profit measure. Ranking on ROIC (weighted most), R&D intensity and capex intensity then matches how long growth creates value and how much profit is held back by expensed or capital investment.",
+  "prediction": "Beats the industry median in all 4 years; median error within 0.02 of the EBITDA-margin/growth box, with a lower mean error.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebit_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "sales_growth_1y",
+      "width": 0.1
+     }
+    }
+   ],
+   "rank": {
+    "roic": 2,
+    "rnd_intensity": 1,
+    "capex_intensity": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebit_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebit_margin",
+       "width": 0.06
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "3c903c8eab",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "sales_ebit_margin_growth_box",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebit_margin",
+      "width": 0.03
+     }
+    },
+    {
+     "band": {
+      "var": "sales_growth_1y",
+      "width": 0.1
+     }
+    }
+   ],
+   "rank": {
+    "roic": 2,
+    "rnd_intensity": 1,
+    "capex_intensity": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebit_margin",
+       "width": 0.03
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebit_margin",
+       "width": 0.06
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen band ebit_margin\u00b10.03, band sales_growth_1y\u00b10.1 | rank roic 2, rnd_intensity 1, capex_intensity 1 | k=10, median, min_peers=5 | fallback [band ebit_margin\u00b10.03] -> [band ebit_margin\u00b10.06] -> []"
+ }
+]

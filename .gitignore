@@ -1,0 +1,11 @@
+# FactSet data is licensed and must not be redistributed: never commit raw or derived panels.
+data/
+*.xlsx
+*.xls
+*.pkl
+
+# Python / OS
+__pycache__/
+*.pyc
+.DS_Store
+.venv/

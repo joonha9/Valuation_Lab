@@ -1,0 +1,264 @@
+{
+ "runs": [
+  "r1",
+  "r2",
+  "r3",
+  "r4",
+  "r5"
+ ],
+ "sims": 20000,
+ "rule": {
+  "description": "Among graded recipes with exploration coverage >= 95% that beat the industry median in at least 3 of 4 exploration years, pick the one with the lowest exploration median |error| for each multiple.",
+  "min_coverage": 0.95,
+  "min_years_beating_industry": 3,
+  "top_n_per_multiple": 1
+ },
+ "multiples": {
+  "EV/EBITDA": {
+   "runs": [
+    {
+     "run": "r1",
+     "n_graded": 12,
+     "id": "g05-03",
+     "name": "ebitda_expensed_investment_gap",
+     "compact": "EV/EBITDA | screen same industry_l3 | rank gross_margin 1, ebitda_margin 1, sales_growth_1y 1, net_debt_to_ebitda 0.5 | k=8, median, min_peers=5 | fallback [same industry_l2] -> []",
+     "explore": 0.3106593384636026,
+     "validate": 0.39357492402220073,
+     "validate_mean": 0.5993535288343832,
+     "years_beating_industry": 4,
+     "years_beating_bl_regression": 3,
+     "pct_random_as_good": 0.0,
+     "random_finalist_median": 0.413398734706224
+    },
+    {
+     "run": "r2",
+     "n_graded": 12,
+     "id": "g03-04",
+     "name": "g03-04 pricing-power and reinvestment EV/EBITDA",
+     "compact": "EV/EBITDA | screen same industry_l2 | rank gross_margin 1, capex_intensity 1.5, ebit_margin 1, sales_growth_1y 1, log_assets 0.5 | k=12, median, min_peers=5",
+     "explore": 0.3077655129124844,
+     "validate": 0.3980551077039048,
+     "validate_mean": 0.6017632923486187,
+     "years_beating_industry": 4,
+     "years_beating_bl_regression": 3,
+     "pct_random_as_good": 0.0,
+     "random_finalist_median": 0.413398734706224
+    },
+    {
+     "run": "r3",
+     "n_graded": 13,
+     "id": "g02-01",
+     "name": "g02-01 EBITDA sector drivers with D&A wedge",
+     "compact": "EV/EBITDA | screen same industry_l2 | rank ebitda_margin 1, ebit_margin 1, roic 1, sales_growth_1y 1, net_debt_to_ebitda 0.5 | k=12, trimmed_mean, min_peers=6 | fallback []",
+     "explore": 0.3160773241309352,
+     "validate": 0.4064341029463951,
+     "validate_mean": 0.6051519270505075,
+     "years_beating_industry": 4,
+     "years_beating_bl_regression": 3,
+     "pct_random_as_good": 0.15995,
+     "random_finalist_median": 0.4109660801154932
+    },
+    {
+     "run": "r4",
+     "n_graded": 14,
+     "id": "g05-01",
+     "name": "ebitda_transitory_margin_l2",
+     "compact": "EV/EBITDA | screen same industry_l2 | rank ebitda_margin 2, asset_turnover 1, sales_growth_1y 1 | k=10, median, min_peers=5 | fallback []",
+     "explore": 0.3137892123526565,
+     "validate": 0.3879146379776984,
+     "validate_mean": 0.5917541227729523,
+     "years_beating_industry": 4,
+     "years_beating_bl_regression": 4,
+     "pct_random_as_good": 0.0,
+     "random_finalist_median": 0.4109660801154932
+    },
+    {
+     "run": "r5",
+     "n_graded": 13,
+     "id": "g01-05",
+     "name": "ebitda_capex_conversion_within_l2",
+     "compact": "EV/EBITDA | screen same industry_l2 | rank capex_intensity 1.5, ebitda_margin 1, sales_growth_1y 1 | k=10, median, min_peers=5 | fallback []",
+     "explore": 0.32327044090814416,
+     "validate": 0.41121095663151086,
+     "validate_mean": 0.6149599199505194,
+     "years_beating_industry": 4,
+     "years_beating_bl_regression": 1,
+     "pct_random_as_good": 0.45575,
+     "random_finalist_median": 0.4109660801154932
+    }
+   ],
+   "agent_mean_validate": 0.39943794585634196,
+   "random_mean_of_k": {
+    "median": 0.41154329419615465,
+    "p05": 0.4051304465054987,
+    "p95": 0.42299897037958634
+   },
+   "p_value_vs_random": 0.0,
+   "benchmarks": {
+    "Growth and ROIC peers": {
+     "value": 0.4051363728735177,
+     "runs_better": 3,
+     "of": 5,
+     "sign_p": 0.5
+    },
+    "Size and margin peers": {
+     "value": 0.42560874953970734,
+     "runs_better": 5,
+     "of": 5,
+     "sign_p": 0.03125
+    },
+    "market_median": {
+     "value": 0.4812480759076034,
+     "runs_better": 5,
+     "of": 5,
+     "sign_p": 0.03125
+    },
+    "industry_median": {
+     "value": 0.42649160289920973,
+     "runs_better": 5,
+     "of": 5,
+     "sign_p": 0.03125
+    },
+    "bl_regression": {
+     "value": 0.4689678961535648,
+     "runs_better": 5,
+     "of": 5,
+     "sign_p": 0.03125
+    },
+    "bl_peers": {
+     "value": 0.47813431904582876,
+     "runs_better": 5,
+     "of": 5,
+     "sign_p": 0.03125
+    }
+   },
+   "random_single_run": {
+    "p05": 0.3997502089702277,
+    "p25": 0.40666380211360026,
+    "p50": 0.4109660801154932,
+    "p75": 0.4183989554045789,
+    "p95": 0.4235111124069338
+   }
+  },
+  "EV/Sales": {
+   "runs": [
+    {
+     "run": "r1",
+     "n_graded": 13,
+     "id": "g01-03",
+     "name": "sales_crossindustry_profitability_twins",
+     "compact": "EV/Sales | rank ebitda_margin 2, gross_margin 1, sales_growth_1y 1, capex_intensity 0.5, asset_turnover 0.5 | k=15, median, min_peers=5",
+     "explore": 0.4198028012290482,
+     "validate": 0.4893769115046883,
+     "validate_mean": 0.7374792043205483,
+     "years_beating_industry": 4,
+     "years_beating_bl_regression": 4,
+     "pct_random_as_good": 0.0,
+     "random_finalist_median": 0.5845590532542007
+    },
+    {
+     "run": "r2",
+     "n_graded": 14,
+     "id": "g01-05",
+     "name": "sales_crossindustry_margin_band",
+     "compact": "EV/Sales | screen band ebitda_margin\u00b10.04 | rank ebitda_margin 2, sales_growth_1y 1, roic 1, log_sales 0.5 | k=12, median, min_peers=5 | fallback [band ebitda_margin\u00b10.1] -> []",
+     "explore": 0.42933331776550976,
+     "validate": 0.5264723559755631,
+     "validate_mean": 0.750341394263563,
+     "years_beating_industry": 4,
+     "years_beating_bl_regression": 4,
+     "pct_random_as_good": 0.0,
+     "random_finalist_median": 0.5843951746897271
+    },
+    {
+     "run": "r3",
+     "n_graded": 11,
+     "id": "g02-04",
+     "name": "g02-04 Sales economic-margin band (R&D add-back)",
+     "compact": "EV/Sales | screen band ebitda_margin\u00b10.04 | rank rnd_intensity 1.5, sales_growth_1y 1, roic 1, capex_intensity 0.5 | k=12, median, min_peers=6 | fallback [band ebitda_margin\u00b10.08] -> []",
+     "explore": 0.42260348517587154,
+     "validate": 0.5114358993450424,
+     "validate_mean": 0.7750479225286507,
+     "years_beating_industry": 4,
+     "years_beating_bl_regression": 4,
+     "pct_random_as_good": 0.0,
+     "random_finalist_median": 0.5940020445922949
+    },
+    {
+     "run": "r4",
+     "n_graded": 13,
+     "id": "g03-06",
+     "name": "g03-06 margin-and-growth box across sectors (EV/Sales)",
+     "compact": "EV/Sales | screen band ebitda_margin\u00b10.03, band sales_growth_1y\u00b10.1 | rank gross_margin 1, rnd_intensity 1, asset_turnover 1 | k=10, median, min_peers=5 | fallback [band ebitda_margin\u00b10.03] -> [band ebitda_margin\u00b10.06] -> []",
+     "explore": 0.3734574207676905,
+     "validate": 0.4693775910996776,
+     "validate_mean": 0.7260223215763875,
+     "years_beating_industry": 4,
+     "years_beating_bl_regression": 4,
+     "pct_random_as_good": 0.0,
+     "random_finalist_median": 0.5845590532542007
+    },
+    {
+     "run": "r5",
+     "n_graded": 13,
+     "id": "g04-04",
+     "name": "L3 margin band with nested widening",
+     "compact": "EV/Sales | screen same industry_l3, band ebitda_margin\u00b10.04 | rank sales_growth_1y 1, rnd_intensity 1, gross_margin 0.5 | k=6, harmonic_mean, min_peers=3 | fallback [same industry_l2, band ebitda_margin\u00b10.04] -> [band ebitda_margin\u00b10.04] -> [band ebitda_margin\u00b10.08] -> []",
+     "explore": 0.41041340876713206,
+     "validate": 0.5118342196868811,
+     "validate_mean": 0.8224817220545884,
+     "years_beating_industry": 4,
+     "years_beating_bl_regression": 4,
+     "pct_random_as_good": 0.0,
+     "random_finalist_median": 0.5845590532542007
+    }
+   ],
+   "agent_mean_validate": 0.5016993955223705,
+   "random_mean_of_k": {
+    "median": 0.5844322752695407,
+    "p05": 0.5585130973058566,
+    "p95": 0.6108822597213399
+   },
+   "p_value_vs_random": 0.0,
+   "benchmarks": {
+    "Margin-matched sales peers": {
+     "value": 0.6048228799293658,
+     "runs_better": 5,
+     "of": 5,
+     "sign_p": 0.03125
+    },
+    "market_median": {
+     "value": 0.8262867115963171,
+     "runs_better": 5,
+     "of": 5,
+     "sign_p": 0.03125
+    },
+    "industry_median": {
+     "value": 0.6504664133030382,
+     "runs_better": 5,
+     "of": 5,
+     "sign_p": 0.03125
+    },
+    "bl_regression": {
+     "value": 0.7510597386014314,
+     "runs_better": 5,
+     "of": 5,
+     "sign_p": 0.03125
+    },
+    "bl_peers": {
+     "value": 0.7626785401481679,
+     "runs_better": 5,
+     "of": 5,
+     "sign_p": 0.03125
+    }
+   },
+   "random_single_run": {
+    "p05": 0.5334977358356563,
+    "p25": 0.554862446761854,
+    "p50": 0.5845590532542007,
+    "p75": 0.6180178109140976,
+    "p95": 0.6336449628783478
+   }
+  }
+ }
+}

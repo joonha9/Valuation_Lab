@@ -1,0 +1,829 @@
+{
+ "conditions": {
+  "full": {
+   "runs": [
+    {
+     "run": "r1",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 5,
+      "graded": 25
+     },
+     "eligible": 14,
+     "distinct_ideas": 25,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g05-03",
+       "name": "ebitda_expensed_investment_gap",
+       "explore": 0.3106593384636026,
+       "validate": 0.39357492402220073,
+       "best_explore_any": 0.3106593384636026,
+       "n_graded": 12
+      },
+      "EV/Sales": {
+       "id": "g01-03",
+       "name": "sales_crossindustry_profitability_twins",
+       "explore": 0.4198028012290482,
+       "validate": 0.4893769115046883,
+       "best_explore_any": 0.37827113174124094,
+       "n_graded": 13
+      }
+     },
+     "rel_improvement": 0.16241621560831948
+    },
+    {
+     "run": "r2",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 4,
+      "graded": 26
+     },
+     "eligible": 14,
+     "distinct_ideas": 26,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g03-04",
+       "name": "g03-04 pricing-power and reinvestment EV/EBITDA",
+       "explore": 0.3077655129124844,
+       "validate": 0.3980551077039048,
+       "best_explore_any": 0.3077655129124844,
+       "n_graded": 12
+      },
+      "EV/Sales": {
+       "id": "g01-05",
+       "name": "sales_crossindustry_margin_band",
+       "explore": 0.42933331776550976,
+       "validate": 0.5264723559755631,
+       "best_explore_any": 0.36518237929095665,
+       "n_graded": 14
+      }
+     },
+     "rel_improvement": 0.12864934882502416
+    },
+    {
+     "run": "r3",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 6,
+      "graded": 24
+     },
+     "eligible": 19,
+     "distinct_ideas": 24,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g02-01",
+       "name": "g02-01 EBITDA sector drivers with D&A wedge",
+       "explore": 0.3160773241309352,
+       "validate": 0.4064341029463951,
+       "best_explore_any": 0.3160773241309352,
+       "n_graded": 13
+      },
+      "EV/Sales": {
+       "id": "g02-04",
+       "name": "g02-04 Sales economic-margin band (R&D add-back)",
+       "explore": 0.42260348517587154,
+       "validate": 0.5114358993450424,
+       "best_explore_any": 0.3778939075789942,
+       "n_graded": 11
+      }
+     },
+     "rel_improvement": 0.1303843946769842
+    },
+    {
+     "run": "r4",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 3,
+      "graded": 27
+     },
+     "eligible": 24,
+     "distinct_ideas": 27,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g05-01",
+       "name": "ebitda_transitory_margin_l2",
+       "explore": 0.3137892123526565,
+       "validate": 0.3879146379776984,
+       "best_explore_any": 0.3137892123526565,
+       "n_graded": 14
+      },
+      "EV/Sales": {
+       "id": "g03-06",
+       "name": "g03-06 margin-and-growth box across sectors (EV/Sales)",
+       "explore": 0.3734574207676905,
+       "validate": 0.4693775910996776,
+       "best_explore_any": 0.3734574207676905,
+       "n_graded": 13
+      }
+     },
+     "rel_improvement": 0.18442514759390424
+    },
+    {
+     "run": "r5",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 4,
+      "graded": 26
+     },
+     "eligible": 23,
+     "distinct_ideas": 26,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g01-05",
+       "name": "ebitda_capex_conversion_within_l2",
+       "explore": 0.32327044090814416,
+       "validate": 0.41121095663151086,
+       "best_explore_any": 0.32327044090814416,
+       "n_graded": 13
+      },
+      "EV/Sales": {
+       "id": "g04-04",
+       "name": "L3 margin band with nested widening",
+       "explore": 0.41041340876713206,
+       "validate": 0.5118342196868811,
+       "best_explore_any": 0.41041340876713206,
+       "n_graded": 13
+      }
+     },
+     "rel_improvement": 0.12447804092137002
+    }
+   ],
+   "mean_rel_improvement": 0.14607062952512043,
+   "multiples": {
+    "EV/EBITDA": {
+     "mean_validate": 0.39943794585634196,
+     "sd_validate": 0.009442244007522863,
+     "values": [
+      0.39357492402220073,
+      0.3980551077039048,
+      0.4064341029463951,
+      0.3879146379776984,
+      0.41121095663151086
+     ],
+     "p_vs_random": 0.0
+    },
+    "EV/Sales": {
+     "mean_validate": 0.5016993955223705,
+     "sd_validate": 0.02240399735903585,
+     "values": [
+      0.4893769115046883,
+      0.5264723559755631,
+      0.5114358993450424,
+      0.4693775910996776,
+      0.5118342196868811
+     ],
+     "p_vs_random": 0.0
+    }
+   },
+   "funnel_mean": {
+    "proposed": 30.0,
+    "invalid": 0.0,
+    "duplicate": 0.0,
+    "rejected_by_critic": 4.4,
+    "graded": 25.6
+   },
+   "eligible_mean": 18.8,
+   "distinct_ideas_mean": 25.6
+  },
+  "no_critic": {
+   "runs": [
+    {
+     "run": "nc1",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 0,
+      "graded": 30
+     },
+     "eligible": 28,
+     "distinct_ideas": 25,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g05-02",
+       "name": "g05-02 L4 capital-turnover match (EV/EBITDA)",
+       "explore": 0.3145972370161123,
+       "validate": 0.4023199074321104,
+       "best_explore_any": 0.3145972370161123,
+       "n_graded": 15
+      },
+      "EV/Sales": {
+       "id": "g05-04",
+       "name": "g05-04 margin-banded L3 peers with asset turnover (EV/Sales)",
+       "explore": 0.3932790493931305,
+       "validate": 0.48716596986842947,
+       "best_explore_any": 0.3932790493931305,
+       "n_graded": 15
+      }
+     },
+     "rel_improvement": 0.15386348646545192
+    },
+    {
+     "run": "nc2",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 0,
+      "graded": 30
+     },
+     "eligible": 29,
+     "distinct_ideas": 24,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g03-01",
+       "name": "g03-01 broad-driver neighborhood, trimmed",
+       "explore": 0.3073146036031123,
+       "validate": 0.3952819186080819,
+       "best_explore_any": 0.3073146036031123,
+       "n_graded": 15
+      },
+      "EV/Sales": {
+       "id": "g05-04",
+       "name": "g05-04 Sales industry margin band plus asset turnover",
+       "explore": 0.3822340525266408,
+       "validate": 0.4787560851298767,
+       "best_explore_any": 0.3822340525266408,
+       "n_graded": 15
+      }
+     },
+     "rel_improvement": 0.16857901850713472
+    },
+    {
+     "run": "nc3",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 0,
+      "graded": 30
+     },
+     "eligible": 26,
+     "distinct_ideas": 24,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g04-02",
+       "name": "g04-02 EBITDA drivers plus D&A share",
+       "explore": 0.3063556522184753,
+       "validate": 0.38608499925268347,
+       "best_explore_any": 0.3063556522184753,
+       "n_graded": 15
+      },
+      "EV/Sales": {
+       "id": "g05-06",
+       "name": "g05-06 Sales margin match + net margin cascade",
+       "explore": 0.4022936292206365,
+       "validate": 0.4775738579417286,
+       "best_explore_any": 0.4022936292206365,
+       "n_graded": 15
+      }
+     },
+     "rel_improvement": 0.1802698357642327
+    },
+    {
+     "run": "nc4",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 0,
+      "graded": 30
+     },
+     "eligible": 28,
+     "distinct_ideas": 26,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g04-03",
+       "name": "g04-03 L2 growth-ROIC with gross and EBITDA margin, k=10",
+       "explore": 0.30652166037176076,
+       "validate": 0.3816696935940332,
+       "best_explore_any": 0.30652166037176076,
+       "n_graded": 15
+      },
+      "EV/Sales": {
+       "id": "g04-04",
+       "name": "g04-04 EV/Sales L2 tight margin band, stronger ROIC, full fallback",
+       "explore": 0.38423959739613184,
+       "validate": 0.49213416536387283,
+       "best_explore_any": 0.3585181053001154,
+       "n_graded": 15
+      }
+     },
+     "rel_improvement": 0.17425394054090637
+    },
+    {
+     "run": "nc5",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 0,
+      "graded": 30
+     },
+     "eligible": 27,
+     "distinct_ideas": 29,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g04-02",
+       "name": "ebitda_l3_moat_reinvest_fallback_l2",
+       "explore": 0.3052015616648484,
+       "validate": 0.3951048481985847,
+       "best_explore_any": 0.3052015616648484,
+       "n_graded": 15
+      },
+      "EV/Sales": {
+       "id": "g05-06",
+       "name": "g05-06 Tight margin band with pricing power and size",
+       "explore": 0.38244551308406943,
+       "validate": 0.48038923425309815,
+       "best_explore_any": 0.38244551308406943,
+       "n_graded": 15
+      }
+     },
+     "rel_improvement": 0.16753124031246225
+    }
+   ],
+   "mean_rel_improvement": 0.1688995043180376,
+   "multiples": {
+    "EV/EBITDA": {
+     "mean_validate": 0.39209227341709874,
+     "sd_validate": 0.008194074899859877,
+     "values": [
+      0.4023199074321104,
+      0.3952819186080819,
+      0.38608499925268347,
+      0.3816696935940332,
+      0.3951048481985847
+     ],
+     "p_vs_random": 0.0
+    },
+    "EV/Sales": {
+     "mean_validate": 0.4832038625114011,
+     "sd_validate": 0.006221945255867614,
+     "values": [
+      0.48716596986842947,
+      0.4787560851298767,
+      0.4775738579417286,
+      0.49213416536387283,
+      0.48038923425309815
+     ],
+     "p_vs_random": 0.0
+    }
+   },
+   "funnel_mean": {
+    "proposed": 30.0,
+    "invalid": 0.0,
+    "duplicate": 0.0,
+    "rejected_by_critic": 0.0,
+    "graded": 30.0
+   },
+   "eligible_mean": 27.6,
+   "distinct_ideas_mean": 25.6
+  },
+  "no_archive": {
+   "runs": [
+    {
+     "run": "na1",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 1,
+      "rejected_by_critic": 14,
+      "graded": 15
+     },
+     "eligible": 11,
+     "distinct_ideas": 15,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g05-01",
+       "name": "EBITDA_L3_growth_reinvestment_risk",
+       "explore": 0.3191270341967808,
+       "validate": 0.3950576640178189,
+       "best_explore_any": 0.3191270341967808,
+       "n_graded": 10
+      },
+      "EV/Sales": {
+       "id": "g01-06",
+       "name": "Sales_L2_margin_band_growth",
+       "explore": 0.41790970319734244,
+       "validate": 0.5047956963555754,
+       "best_explore_any": 0.41790970319734244,
+       "n_graded": 5
+      }
+     },
+     "rel_improvement": 0.14882581728999694
+    },
+    {
+     "run": "na2",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 1,
+      "rejected_by_critic": 18,
+      "graded": 11
+     },
+     "eligible": 11,
+     "distinct_ideas": 11,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g03-01",
+       "name": "ebitda_l2_growth_return_risk",
+       "explore": 0.3155230533469618,
+       "validate": 0.3956094165041192,
+       "best_explore_any": 0.3155230533469618,
+       "n_graded": 5
+      },
+      "EV/Sales": {
+       "id": "g01-06",
+       "name": "Sales_L2_margin_band_size_growth",
+       "explore": 0.4120598050246381,
+       "validate": 0.5054484748843726,
+       "best_explore_any": 0.4120598050246381,
+       "n_graded": 6
+      }
+     },
+     "rel_improvement": 0.14767718966364388
+    },
+    {
+     "run": "na3",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 1,
+      "rejected_by_critic": 13,
+      "graded": 16
+     },
+     "eligible": 14,
+     "distinct_ideas": 16,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g03-03",
+       "name": "Cash-conversion peers (EV/EBITDA)",
+       "explore": 0.312838408274263,
+       "validate": 0.41165288477869216,
+       "best_explore_any": 0.312838408274263,
+       "n_graded": 7
+      },
+      "EV/Sales": {
+       "id": "g02-06",
+       "name": "L3 margin-band EV/Sales with nearest growth",
+       "explore": 0.40835587206553325,
+       "validate": 0.5069839352277858,
+       "best_explore_any": 0.40835587206553325,
+       "n_graded": 9
+      }
+     },
+     "rel_improvement": 0.12768825655703608
+    },
+    {
+     "run": "na4",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 17,
+      "graded": 13
+     },
+     "eligible": 11,
+     "distinct_ideas": 13,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g03-01",
+       "name": "L3 fundamental-twin EV/EBITDA",
+       "explore": 0.31726321608076996,
+       "validate": 0.39638891981164015,
+       "best_explore_any": 0.31726321608076996,
+       "n_graded": 6
+      },
+      "EV/Sales": {
+       "id": "g05-06",
+       "name": "Sales_crossindustry_profitability_twins",
+       "explore": 0.42166757573252545,
+       "validate": 0.48215029705096796,
+       "best_explore_any": 0.42166757573252545,
+       "n_graded": 7
+      }
+     },
+     "rel_improvement": 0.16467215888453304
+    },
+    {
+     "run": "na5",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 1,
+      "rejected_by_critic": 16,
+      "graded": 13
+     },
+     "eligible": 10,
+     "distinct_ideas": 13,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g02-03",
+       "name": "L4-first EBITDA peers, size and margin tie-break",
+       "explore": 0.32726211694169033,
+       "validate": 0.4193567869392868,
+       "best_explore_any": 0.32726211694169033,
+       "n_graded": 8
+      },
+      "EV/Sales": {
+       "id": "g01-05",
+       "name": "Sales_marginband_crossindustry",
+       "explore": 0.41173781325774494,
+       "validate": 0.5120508593974128,
+       "best_explore_any": 0.39114148474516436,
+       "n_graded": 5
+      }
+     },
+     "rel_improvement": 0.11476170124794795
+    }
+   ],
+   "mean_rel_improvement": 0.14072502472863158,
+   "multiples": {
+    "EV/EBITDA": {
+     "mean_validate": 0.40361313441031144,
+     "sd_validate": 0.011202064892971349,
+     "values": [
+      0.3950576640178189,
+      0.3956094165041192,
+      0.41165288477869216,
+      0.39638891981164015,
+      0.4193567869392868
+     ],
+     "p_vs_random": 0.00085
+    },
+    "EV/Sales": {
+     "mean_validate": 0.502285852583223,
+     "sd_validate": 0.011610011098080263,
+     "values": [
+      0.5047956963555754,
+      0.5054484748843726,
+      0.5069839352277858,
+      0.48215029705096796,
+      0.5120508593974128
+     ],
+     "p_vs_random": 0.0
+    }
+   },
+   "funnel_mean": {
+    "proposed": 30.0,
+    "invalid": 0.0,
+    "duplicate": 0.8,
+    "rejected_by_critic": 15.6,
+    "graded": 13.6
+   },
+   "eligible_mean": 11.4,
+   "distinct_ideas_mean": 13.6
+  },
+  "neither": {
+   "runs": [
+    {
+     "run": "nn1",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 1,
+      "rejected_by_critic": 0,
+      "graded": 29
+     },
+     "eligible": 23,
+     "distinct_ideas": 25,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g04-01",
+       "name": "L2 industry, profitability-growth-leverage nearest EBITDA peers",
+       "explore": 0.31650237533466696,
+       "validate": 0.3994900760970928,
+       "best_explore_any": 0.31650237533466696,
+       "n_graded": 15
+      },
+      "EV/Sales": {
+       "id": "g05-04",
+       "name": "SALES_L2_margin_band",
+       "explore": 0.40037206013970716,
+       "validate": 0.4887558118063439,
+       "best_explore_any": 0.40037206013970716,
+       "n_graded": 14
+      }
+     },
+     "rel_improvement": 0.1559589778554228
+    },
+    {
+     "run": "nn2",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 1,
+      "rejected_by_critic": 0,
+      "graded": 29
+     },
+     "eligible": 25,
+     "distinct_ideas": 26,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g03-01",
+       "name": "ebitda_l2_growth_return_risk",
+       "explore": 0.3155230533469618,
+       "validate": 0.3956094165041192,
+       "best_explore_any": 0.3155230533469618,
+       "n_graded": 16
+      },
+      "EV/Sales": {
+       "id": "g01-06",
+       "name": "Sales_L2_margin_band_size_growth",
+       "explore": 0.4120598050246381,
+       "validate": 0.5054484748843726,
+       "best_explore_any": 0.4120598050246381,
+       "n_graded": 13
+      }
+     },
+     "rel_improvement": 0.14767718966364388
+    },
+    {
+     "run": "nn3",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 1,
+      "rejected_by_critic": 0,
+      "graded": 29
+     },
+     "eligible": 23,
+     "distinct_ideas": 26,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g03-03",
+       "name": "Cash-conversion peers (EV/EBITDA)",
+       "explore": 0.312838408274263,
+       "validate": 0.41165288477869216,
+       "best_explore_any": 0.312838408274263,
+       "n_graded": 15
+      },
+      "EV/Sales": {
+       "id": "g02-06",
+       "name": "L3 margin-band EV/Sales with nearest growth",
+       "explore": 0.40835587206553325,
+       "validate": 0.5069839352277858,
+       "best_explore_any": 0.40835587206553325,
+       "n_graded": 14
+      }
+     },
+     "rel_improvement": 0.12768825655703608
+    },
+    {
+     "run": "nn4",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 0,
+      "rejected_by_critic": 0,
+      "graded": 30
+     },
+     "eligible": 24,
+     "distinct_ideas": 28,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g03-01",
+       "name": "L3 fundamental-twin EV/EBITDA",
+       "explore": 0.31726321608076996,
+       "validate": 0.39638891981164015,
+       "best_explore_any": 0.31726321608076996,
+       "n_graded": 15
+      },
+      "EV/Sales": {
+       "id": "g05-06",
+       "name": "Sales_crossindustry_profitability_twins",
+       "explore": 0.42166757573252545,
+       "validate": 0.48215029705096796,
+       "best_explore_any": 0.38644484965485515,
+       "n_graded": 15
+      }
+     },
+     "rel_improvement": 0.16467215888453304
+    },
+    {
+     "run": "nn5",
+     "funnel": {
+      "proposed": 30,
+      "invalid": 0,
+      "duplicate": 1,
+      "rejected_by_critic": 0,
+      "graded": 29
+     },
+     "eligible": 23,
+     "distinct_ideas": 23,
+     "multiples": {
+      "EV/EBITDA": {
+       "id": "g03-01",
+       "name": "EBITDA_L2_fundamental_twins",
+       "explore": 0.31400813589329785,
+       "validate": 0.39126884031432946,
+       "best_explore_any": 0.31400813589329785,
+       "n_graded": 15
+      },
+      "EV/Sales": {
+       "id": "g02-05",
+       "name": "Cross-industry margin-band EV/Sales peers",
+       "explore": 0.41034880343162866,
+       "validate": 0.5037311822034684,
+       "best_explore_any": 0.39114148474516436,
+       "n_graded": 14
+      }
+     },
+     "rel_improvement": 0.15408593746726226
+    }
+   ],
+   "mean_rel_improvement": 0.1500165040855796,
+   "multiples": {
+    "EV/EBITDA": {
+     "mean_validate": 0.39888202750117474,
+     "sd_validate": 0.007719305450125165,
+     "values": [
+      0.3994900760970928,
+      0.3956094165041192,
+      0.41165288477869216,
+      0.39638891981164015,
+      0.39126884031432946
+     ],
+     "p_vs_random": 0.0
+    },
+    "EV/Sales": {
+     "mean_validate": 0.49741394023458774,
+     "sd_validate": 0.01122483951353697,
+     "values": [
+      0.4887558118063439,
+      0.5054484748843726,
+      0.5069839352277858,
+      0.48215029705096796,
+      0.5037311822034684
+     ],
+     "p_vs_random": 0.0
+    }
+   },
+   "funnel_mean": {
+    "proposed": 30.0,
+    "invalid": 0.0,
+    "duplicate": 0.8,
+    "rejected_by_critic": 0.0,
+    "graded": 29.2
+   },
+   "eligible_mean": 23.6,
+   "distinct_ideas_mean": 25.6
+  }
+ },
+ "tests": {
+  "full_vs_no_critic": {
+   "rel_improvement_diff": -0.022828874792917175,
+   "p_full_better": 0.9484126984126984,
+   "p_condition_better": 0.05555555555555555,
+   "EV/EBITDA": {
+    "diff": -0.007345672439243223,
+    "p_full_better": 0.8968253968253969
+   },
+   "EV/Sales": {
+    "diff": -0.0184955330109694,
+    "p_full_better": 0.9444444444444444
+   }
+  },
+  "full_vs_no_archive": {
+   "rel_improvement_diff": 0.005345604796488851,
+   "p_full_better": 0.373015873015873,
+   "p_condition_better": 0.6309523809523809,
+   "EV/EBITDA": {
+    "diff": 0.004175188553969478,
+    "p_full_better": 0.2777777777777778
+   },
+   "EV/Sales": {
+    "diff": 0.0005864570608524744,
+    "p_full_better": 0.48412698412698413
+   }
+  },
+  "full_vs_neither": {
+   "rel_improvement_diff": -0.003945874560459167,
+   "p_full_better": 0.5992063492063492,
+   "p_condition_better": 0.40476190476190477,
+   "EV/EBITDA": {
+    "diff": -0.0005559183551672175,
+    "p_full_better": 0.5396825396825397
+   },
+   "EV/Sales": {
+    "diff": -0.004285455287782791,
+    "p_full_better": 0.6507936507936508
+   }
+  },
+  "critic_effect_without_archive": {
+   "rel_improvement_diff": -0.009291479356948018,
+   "p": 0.8174603174603174
+  }
+ }
+}

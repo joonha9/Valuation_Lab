@@ -1,0 +1,1720 @@
+{
+  "headline": "For EV/EBITDA, the best recipe (Growth and ROIC peers) has a median error of 0.405 in the validation years, against 0.426 for the industry median.",
+  "dataset": "FactSet (9 snapshots)",
+  "synthetic": false,
+  "notes": [
+    "sales_growth_3y is unavailable in FY 2016\u20132017 (not enough prior years); recipes that rank on it use their other features in those years."
+  ],
+  "generated": "2026-11-02 21:01",
+  "n_rows": 27693,
+  "protocol": {
+    "explore": [
+      2016,
+      2017,
+      2018,
+      2019
+    ],
+    "validate": [
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "holdout": [
+      2024,
+      2025
+    ]
+  },
+  "multiples": [
+    {
+      "multiple": "EV/EBITDA",
+      "rows": [
+        {
+          "id": "market_median",
+          "kind": "baseline",
+          "name": "Market-wide median",
+          "short": "Market median",
+          "mechanism": null,
+          "spec": {
+            "name": "Market-wide median",
+            "multiple": "EV/EBITDA",
+            "filters": [],
+            "rank": {},
+            "k": "all",
+            "agg": "median",
+            "min_peers": 3,
+            "fallback": []
+          },
+          "explore": {
+            "recipe": "Market-wide median",
+            "multiple": "EV/EBITDA",
+            "period": "explore",
+            "n_eligible": 8329,
+            "n_covered": 8329,
+            "coverage": 1.0,
+            "median_abs_error": 0.38129386430201884,
+            "mean_abs_error": 0.5738105222091812,
+            "within_15pct": 0.22199543762756632,
+            "median_peers": 2146.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 8329,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "industry_median": {
+                "n_common": 8262,
+                "n_years": 4,
+                "mean_gain": -0.06118756119501935,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.425199709513435
+              },
+              "bl_regression": {
+                "n_common": 8329,
+                "n_years": 4,
+                "mean_gain": -0.08236572401607761,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.44351062552527315
+              },
+              "bl_peers": {
+                "n_common": 8329,
+                "n_years": 4,
+                "mean_gain": -0.051173071026669806,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.48036979229199184
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Market-wide median",
+            "multiple": "EV/EBITDA",
+            "period": "validate",
+            "n_eligible": 8245,
+            "n_covered": 8245,
+            "coverage": 1.0,
+            "median_abs_error": 0.4812480759076034,
+            "mean_abs_error": 0.7063424479779951,
+            "within_15pct": 0.16979987871437235,
+            "median_peers": 2095.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 8245,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "industry_median": {
+                "n_common": 8206,
+                "n_years": 4,
+                "mean_gain": -0.06331775217212068,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.4318791128442603
+              },
+              "bl_regression": {
+                "n_common": 8245,
+                "n_years": 4,
+                "mean_gain": -0.0805412047139676,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.46258338386901154
+              },
+              "bl_peers": {
+                "n_common": 8245,
+                "n_years": 4,
+                "mean_gain": -0.05967126240280448,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.4824742268041237
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.3301
+            ],
+            [
+              2017,
+              0.3449
+            ],
+            [
+              2018,
+              0.4182
+            ],
+            [
+              2019,
+              0.4466
+            ],
+            [
+              2020,
+              0.4929
+            ],
+            [
+              2021,
+              0.4884
+            ],
+            [
+              2022,
+              0.4836
+            ],
+            [
+              2023,
+              0.4578
+            ]
+          ]
+        },
+        {
+          "id": "industry_median",
+          "kind": "baseline",
+          "name": "Industry median (L3, fallback L2)",
+          "short": "Industry median",
+          "mechanism": null,
+          "spec": {
+            "name": "Industry median (L3, fallback L2)",
+            "multiple": "EV/EBITDA",
+            "filters": [
+              {
+                "same": "industry_l3"
+              }
+            ],
+            "rank": {},
+            "k": "all",
+            "agg": "median",
+            "min_peers": 3,
+            "fallback": [
+              [
+                {
+                  "same": "industry_l2"
+                }
+              ]
+            ]
+          },
+          "explore": {
+            "recipe": "Industry median (L3, fallback L2)",
+            "multiple": "EV/EBITDA",
+            "period": "explore",
+            "n_eligible": 8329,
+            "n_covered": 8262,
+            "coverage": 0.9919558170248529,
+            "median_abs_error": 0.33321519109391307,
+            "mean_abs_error": 0.5130145683027347,
+            "within_15pct": 0.25393367223432584,
+            "median_peers": 17.0,
+            "fallback_share": 0.0823045267489712,
+            "vs": {
+              "market_median": {
+                "n_common": 8262,
+                "n_years": 4,
+                "mean_gain": 0.06118756119501935,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5721374969740983
+              },
+              "industry_median": {
+                "n_common": 8262,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "bl_regression": {
+                "n_common": 8262,
+                "n_years": 4,
+                "mean_gain": -0.021685327165843555,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.5007262164124909
+              },
+              "bl_peers": {
+                "n_common": 8262,
+                "n_years": 4,
+                "mean_gain": 0.009320796594821242,
+                "t_stat": NaN,
+                "share_years_better": 0.75,
+                "share_firms_better": 0.5343742435245703
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Industry median (L3, fallback L2)",
+            "multiple": "EV/EBITDA",
+            "period": "validate",
+            "n_eligible": 8245,
+            "n_covered": 8206,
+            "coverage": 0.9952698605215282,
+            "median_abs_error": 0.42649160289920973,
+            "mean_abs_error": 0.6433862721104355,
+            "within_15pct": 0.20192542042407993,
+            "median_peers": 17.0,
+            "fallback_share": 0.09419936631732878,
+            "vs": {
+              "market_median": {
+                "n_common": 8206,
+                "n_years": 4,
+                "mean_gain": 0.06331775217212068,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5678771630514258
+              },
+              "industry_median": {
+                "n_common": 8206,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "bl_regression": {
+                "n_common": 8206,
+                "n_years": 4,
+                "mean_gain": -0.017614858101000042,
+                "t_stat": NaN,
+                "share_years_better": 0.25,
+                "share_firms_better": 0.5107238605898123
+              },
+              "bl_peers": {
+                "n_common": 8206,
+                "n_years": 4,
+                "mean_gain": 0.003509843554548175,
+                "t_stat": NaN,
+                "share_years_better": 0.75,
+                "share_firms_better": 0.5265659273702169
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.298
+            ],
+            [
+              2017,
+              0.3171
+            ],
+            [
+              2018,
+              0.3568
+            ],
+            [
+              2019,
+              0.3829
+            ],
+            [
+              2020,
+              0.4791
+            ],
+            [
+              2021,
+              0.4314
+            ],
+            [
+              2022,
+              0.4016
+            ],
+            [
+              2023,
+              0.3997
+            ]
+          ]
+        },
+        {
+          "id": "bl_regression",
+          "kind": "baseline",
+          "name": "Warranted multiple (Bhojraj-Lee regression)",
+          "short": "B&L regression",
+          "mechanism": null,
+          "spec": {
+            "name": "Warranted multiple (Bhojraj-Lee regression)",
+            "multiple": "EV/EBITDA",
+            "method": "Bhojraj-Lee warranted multiple",
+            "mode": "regression",
+            "k": null,
+            "regressors": [
+              "log_ind_multiple",
+              "ebitda_margin",
+              "roic",
+              "sales_growth_1y",
+              "rnd_intensity",
+              "debt_to_assets",
+              "log_sales",
+              "loss"
+            ],
+            "coefficients": "estimated on the prior fiscal year"
+          },
+          "explore": {
+            "recipe": "Warranted multiple (Bhojraj-Lee regression)",
+            "multiple": "EV/EBITDA",
+            "period": "explore",
+            "n_eligible": 8329,
+            "n_covered": 8329,
+            "coverage": 1.0,
+            "median_abs_error": 0.3566391091302372,
+            "mean_abs_error": 0.4920159172237245,
+            "within_15pct": 0.2288389962780646,
+            "median_peers": 0.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 8329,
+                "n_years": 4,
+                "mean_gain": 0.08236572401607761,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5564893744747269
+              },
+              "industry_median": {
+                "n_common": 8262,
+                "n_years": 4,
+                "mean_gain": 0.021685327165843555,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.49927378358750907
+              },
+              "bl_regression": {
+                "n_common": 8329,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "bl_peers": {
+                "n_common": 8329,
+                "n_years": 4,
+                "mean_gain": 0.031192652989407817,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.552287189338456
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Warranted multiple (Bhojraj-Lee regression)",
+            "multiple": "EV/EBITDA",
+            "period": "validate",
+            "n_eligible": 8245,
+            "n_covered": 8245,
+            "coverage": 1.0,
+            "median_abs_error": 0.4689678961535648,
+            "mean_abs_error": 0.6259981514900275,
+            "within_15pct": 0.17598544572468164,
+            "median_peers": 0.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 8245,
+                "n_years": 4,
+                "mean_gain": 0.0805412047139676,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5374166161309885
+              },
+              "industry_median": {
+                "n_common": 8206,
+                "n_years": 4,
+                "mean_gain": 0.017614858101000042,
+                "t_stat": NaN,
+                "share_years_better": 0.75,
+                "share_firms_better": 0.48927613941018766
+              },
+              "bl_regression": {
+                "n_common": 8245,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "bl_peers": {
+                "n_common": 8245,
+                "n_years": 4,
+                "mean_gain": 0.02086994231116312,
+                "t_stat": NaN,
+                "share_years_better": 0.75,
+                "share_firms_better": 0.527107337780473
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.3222
+            ],
+            [
+              2017,
+              0.3233
+            ],
+            [
+              2018,
+              0.3942
+            ],
+            [
+              2019,
+              0.4089
+            ],
+            [
+              2020,
+              0.4561
+            ],
+            [
+              2021,
+              0.5449
+            ],
+            [
+              2022,
+              0.4366
+            ],
+            [
+              2023,
+              0.4465
+            ]
+          ]
+        },
+        {
+          "id": "bl_peers",
+          "kind": "baseline",
+          "name": "Warranted-multiple peers (Bhojraj-Lee, k=8)",
+          "short": "B&L peers",
+          "mechanism": null,
+          "spec": {
+            "name": "Warranted-multiple peers (Bhojraj-Lee, k=8)",
+            "multiple": "EV/EBITDA",
+            "method": "Bhojraj-Lee warranted multiple",
+            "mode": "peers",
+            "k": 8,
+            "regressors": [
+              "log_ind_multiple",
+              "ebitda_margin",
+              "roic",
+              "sales_growth_1y",
+              "rnd_intensity",
+              "debt_to_assets",
+              "log_sales",
+              "loss"
+            ],
+            "coefficients": "estimated on the prior fiscal year"
+          },
+          "explore": {
+            "recipe": "Warranted-multiple peers (Bhojraj-Lee, k=8)",
+            "multiple": "EV/EBITDA",
+            "period": "explore",
+            "n_eligible": 8329,
+            "n_covered": 8329,
+            "coverage": 1.0,
+            "median_abs_error": 0.37999769985369314,
+            "mean_abs_error": 0.5232768765786795,
+            "within_15pct": 0.21142994357065675,
+            "median_peers": 8.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 8329,
+                "n_years": 4,
+                "mean_gain": 0.051173071026669806,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5196302077080082
+              },
+              "industry_median": {
+                "n_common": 8262,
+                "n_years": 4,
+                "mean_gain": -0.009320796594821242,
+                "t_stat": NaN,
+                "share_years_better": 0.25,
+                "share_firms_better": 0.4656257564754297
+              },
+              "bl_regression": {
+                "n_common": 8329,
+                "n_years": 4,
+                "mean_gain": -0.031192652989407817,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.447712810661544
+              },
+              "bl_peers": {
+                "n_common": 8329,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Warranted-multiple peers (Bhojraj-Lee, k=8)",
+            "multiple": "EV/EBITDA",
+            "period": "validate",
+            "n_eligible": 8245,
+            "n_covered": 8245,
+            "coverage": 1.0,
+            "median_abs_error": 0.47813431904582876,
+            "mean_abs_error": 0.6463322197172303,
+            "within_15pct": 0.16870830806549425,
+            "median_peers": 8.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 8245,
+                "n_years": 4,
+                "mean_gain": 0.05967126240280448,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5175257731958763
+              },
+              "industry_median": {
+                "n_common": 8206,
+                "n_years": 4,
+                "mean_gain": -0.003509843554548175,
+                "t_stat": NaN,
+                "share_years_better": 0.25,
+                "share_firms_better": 0.4733122105776261
+              },
+              "bl_regression": {
+                "n_common": 8245,
+                "n_years": 4,
+                "mean_gain": -0.02086994231116312,
+                "t_stat": NaN,
+                "share_years_better": 0.25,
+                "share_firms_better": 0.47289266221952697
+              },
+              "bl_peers": {
+                "n_common": 8245,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.3445
+            ],
+            [
+              2017,
+              0.35
+            ],
+            [
+              2018,
+              0.415
+            ],
+            [
+              2019,
+              0.4196
+            ],
+            [
+              2020,
+              0.4655
+            ],
+            [
+              2021,
+              0.4965
+            ],
+            [
+              2022,
+              0.4749
+            ],
+            [
+              2023,
+              0.472
+            ]
+          ]
+        },
+        {
+          "id": "recipe_0",
+          "kind": "recipe",
+          "name": "Growth and ROIC peers",
+          "short": "Growth + ROIC",
+          "mechanism": "Within an industry, firms with similar growth and returns on capital share the discount rate and growth expectations that set EV/EBITDA.",
+          "spec": {
+            "name": "Growth and ROIC peers",
+            "multiple": "EV/EBITDA",
+            "filters": [
+              {
+                "same": "industry_l3"
+              }
+            ],
+            "rank": {
+              "sales_growth_3y": 0.5,
+              "roic": 0.5
+            },
+            "k": 8,
+            "agg": "median",
+            "min_peers": 3,
+            "fallback": [
+              [
+                {
+                  "same": "industry_l2"
+                }
+              ]
+            ]
+          },
+          "explore": {
+            "recipe": "Growth and ROIC peers",
+            "multiple": "EV/EBITDA",
+            "period": "explore",
+            "n_eligible": 8329,
+            "n_covered": 8108,
+            "coverage": 0.9734662024252612,
+            "median_abs_error": 0.32337793256042896,
+            "mean_abs_error": 0.48507181329060156,
+            "within_15pct": 0.262086827824371,
+            "median_peers": 8.0,
+            "fallback_share": 0.08954119388258511,
+            "vs": {
+              "market_median": {
+                "n_common": 8108,
+                "n_years": 4,
+                "mean_gain": 0.0714920812361606,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5768376911692156
+              },
+              "industry_median": {
+                "n_common": 8108,
+                "n_years": 4,
+                "mean_gain": 0.010659897846506186,
+                "t_stat": NaN,
+                "share_years_better": 0.75,
+                "share_firms_better": 0.3952886038480513
+              },
+              "bl_regression": {
+                "n_common": 8108,
+                "n_years": 4,
+                "mean_gain": -0.007668914052837006,
+                "t_stat": NaN,
+                "share_years_better": 0.25,
+                "share_firms_better": 0.5197335964479527
+              },
+              "bl_peers": {
+                "n_common": 8108,
+                "n_years": 4,
+                "mean_gain": 0.02195358851566019,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5469906265416872
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Growth and ROIC peers",
+            "multiple": "EV/EBITDA",
+            "period": "validate",
+            "n_eligible": 8245,
+            "n_covered": 8083,
+            "coverage": 0.980351728320194,
+            "median_abs_error": 0.4051363728735177,
+            "mean_abs_error": 0.6110897404045704,
+            "within_15pct": 0.21477174316466657,
+            "median_peers": 8.0,
+            "fallback_share": 0.10924161821106025,
+            "vs": {
+              "market_median": {
+                "n_common": 8083,
+                "n_years": 4,
+                "mean_gain": 0.08220666407946474,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5678584683904491
+              },
+              "industry_median": {
+                "n_common": 8083,
+                "n_years": 4,
+                "mean_gain": 0.018818992219275656,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.4200173203018681
+              },
+              "bl_regression": {
+                "n_common": 8083,
+                "n_years": 4,
+                "mean_gain": 0.00581208691403299,
+                "t_stat": NaN,
+                "share_years_better": 0.25,
+                "share_firms_better": 0.5340838797476185
+              },
+              "bl_peers": {
+                "n_common": 8083,
+                "n_years": 4,
+                "mean_gain": 0.02661268300576639,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.54497092663615
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.2912
+            ],
+            [
+              2017,
+              0.3006
+            ],
+            [
+              2018,
+              0.3453
+            ],
+            [
+              2019,
+              0.3808
+            ],
+            [
+              2020,
+              0.4288
+            ],
+            [
+              2021,
+              0.3957
+            ],
+            [
+              2022,
+              0.4015
+            ],
+            [
+              2023,
+              0.4001
+            ]
+          ]
+        },
+        {
+          "id": "recipe_1",
+          "kind": "recipe",
+          "name": "Size and margin peers",
+          "short": "Size + margin",
+          "mechanism": "Practitioner default: pick sector peers of similar scale and profitability.",
+          "spec": {
+            "name": "Size and margin peers",
+            "multiple": "EV/EBITDA",
+            "filters": [
+              {
+                "same": "industry_l2"
+              }
+            ],
+            "rank": {
+              "log_sales": 0.5,
+              "ebitda_margin": 0.5
+            },
+            "k": 10,
+            "agg": "median",
+            "min_peers": 3,
+            "fallback": []
+          },
+          "explore": {
+            "recipe": "Size and margin peers",
+            "multiple": "EV/EBITDA",
+            "period": "explore",
+            "n_eligible": 8329,
+            "n_covered": 8261,
+            "coverage": 0.991835754592388,
+            "median_abs_error": 0.3308275233059073,
+            "mean_abs_error": 0.5001444763317311,
+            "within_15pct": 0.25251180244522453,
+            "median_peers": 10.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 8261,
+                "n_years": 4,
+                "mean_gain": 0.07335471226446966,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5682120808618811
+              },
+              "industry_median": {
+                "n_common": 8261,
+                "n_years": 4,
+                "mean_gain": 0.012231168870831656,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.48771335189444376
+              },
+              "bl_regression": {
+                "n_common": 8261,
+                "n_years": 4,
+                "mean_gain": -0.009481111070773244,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.509623532260017
+              },
+              "bl_peers": {
+                "n_common": 8261,
+                "n_years": 4,
+                "mean_gain": 0.02153875689369565,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5392809587217043
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Size and margin peers",
+            "multiple": "EV/EBITDA",
+            "period": "validate",
+            "n_eligible": 8245,
+            "n_covered": 8205,
+            "coverage": 0.9951485748938751,
+            "median_abs_error": 0.42560874953970734,
+            "mean_abs_error": 0.6214483645675999,
+            "within_15pct": 0.2052407068860451,
+            "median_peers": 10.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 8205,
+                "n_years": 4,
+                "mean_gain": 0.08472884524226121,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5583180987202925
+              },
+              "industry_median": {
+                "n_common": 8205,
+                "n_years": 4,
+                "mean_gain": 0.021363669781991605,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.4817794028031688
+              },
+              "bl_regression": {
+                "n_common": 8205,
+                "n_years": 4,
+                "mean_gain": 0.003787046938879582,
+                "t_stat": NaN,
+                "share_years_better": 0.25,
+                "share_firms_better": 0.52224253503961
+              },
+              "bl_peers": {
+                "n_common": 8205,
+                "n_years": 4,
+                "mean_gain": 0.024968410407624035,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.536745886654479
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.2929
+            ],
+            [
+              2017,
+              0.3067
+            ],
+            [
+              2018,
+              0.3642
+            ],
+            [
+              2019,
+              0.3824
+            ],
+            [
+              2020,
+              0.4345
+            ],
+            [
+              2021,
+              0.4322
+            ],
+            [
+              2022,
+              0.4152
+            ],
+            [
+              2023,
+              0.4158
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "multiple": "EV/Sales",
+      "rows": [
+        {
+          "id": "market_median",
+          "kind": "baseline",
+          "name": "Market-wide median",
+          "short": "Market median",
+          "mechanism": null,
+          "spec": {
+            "name": "Market-wide median",
+            "multiple": "EV/Sales",
+            "filters": [],
+            "rank": {},
+            "k": "all",
+            "agg": "median",
+            "min_peers": 3,
+            "fallback": []
+          },
+          "explore": {
+            "recipe": "Market-wide median",
+            "multiple": "EV/Sales",
+            "period": "explore",
+            "n_eligible": 10408,
+            "n_covered": 10408,
+            "coverage": 1.0,
+            "median_abs_error": 0.788130500591266,
+            "mean_abs_error": 1.156040130291606,
+            "within_15pct": 0.1037663335895465,
+            "median_peers": 2611.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 10408,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "industry_median": {
+                "n_common": 10357,
+                "n_years": 4,
+                "mean_gain": -0.2102012394394822,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.3824466544366129
+              },
+              "bl_regression": {
+                "n_common": 10408,
+                "n_years": 4,
+                "mean_gain": -0.3192769339214165,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.4062259800153728
+              },
+              "bl_peers": {
+                "n_common": 10408,
+                "n_years": 4,
+                "mean_gain": -0.29554929021849946,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.4189085318985396
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Market-wide median",
+            "multiple": "EV/Sales",
+            "period": "validate",
+            "n_eligible": 11322,
+            "n_covered": 11322,
+            "coverage": 1.0,
+            "median_abs_error": 0.8262867115963171,
+            "mean_abs_error": 1.169157466506128,
+            "within_15pct": 0.10439851616322204,
+            "median_peers": 2871.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 11322,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "industry_median": {
+                "n_common": 11285,
+                "n_years": 4,
+                "mean_gain": -0.15590363616284736,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.4049623393885689
+              },
+              "bl_regression": {
+                "n_common": 11322,
+                "n_years": 4,
+                "mean_gain": -0.24237549062891336,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.44294294294294295
+              },
+              "bl_peers": {
+                "n_common": 11322,
+                "n_years": 4,
+                "mean_gain": -0.23928715600759154,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.4500088323617735
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.7308
+            ],
+            [
+              2017,
+              0.7715
+            ],
+            [
+              2018,
+              0.793
+            ],
+            [
+              2019,
+              0.8686
+            ],
+            [
+              2020,
+              0.9669
+            ],
+            [
+              2021,
+              0.807
+            ],
+            [
+              2022,
+              0.7878
+            ],
+            [
+              2023,
+              0.7527
+            ]
+          ]
+        },
+        {
+          "id": "industry_median",
+          "kind": "baseline",
+          "name": "Industry median (L3, fallback L2)",
+          "short": "Industry median",
+          "mechanism": null,
+          "spec": {
+            "name": "Industry median (L3, fallback L2)",
+            "multiple": "EV/Sales",
+            "filters": [
+              {
+                "same": "industry_l3"
+              }
+            ],
+            "rank": {},
+            "k": "all",
+            "agg": "median",
+            "min_peers": 3,
+            "fallback": [
+              [
+                {
+                  "same": "industry_l2"
+                }
+              ]
+            ]
+          },
+          "explore": {
+            "recipe": "Industry median (L3, fallback L2)",
+            "multiple": "EV/Sales",
+            "period": "explore",
+            "n_eligible": 10408,
+            "n_covered": 10357,
+            "coverage": 0.9950999231360492,
+            "median_abs_error": 0.6026835497986608,
+            "mean_abs_error": 0.9450201838704182,
+            "within_15pct": 0.1445399246886164,
+            "median_peers": 26.0,
+            "fallback_share": 0.06401467606449744,
+            "vs": {
+              "market_median": {
+                "n_common": 10357,
+                "n_years": 4,
+                "mean_gain": 0.2102012394394822,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.617553345563387
+              },
+              "industry_median": {
+                "n_common": 10357,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "bl_regression": {
+                "n_common": 10357,
+                "n_years": 4,
+                "mean_gain": -0.10872989040946546,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.5093173698947572
+              },
+              "bl_peers": {
+                "n_common": 10357,
+                "n_years": 4,
+                "mean_gain": -0.08502956126826733,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.5299797238582601
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Industry median (L3, fallback L2)",
+            "multiple": "EV/Sales",
+            "period": "validate",
+            "n_eligible": 11322,
+            "n_covered": 11285,
+            "coverage": 0.9967320261437909,
+            "median_abs_error": 0.6504664133030382,
+            "mean_abs_error": 1.011597406892052,
+            "within_15pct": 0.13141338059370847,
+            "median_peers": 28.0,
+            "fallback_share": 0.06406734603455914,
+            "vs": {
+              "market_median": {
+                "n_common": 11285,
+                "n_years": 4,
+                "mean_gain": 0.15590363616284736,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5950376606114312
+              },
+              "industry_median": {
+                "n_common": 11285,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "bl_regression": {
+                "n_common": 11285,
+                "n_years": 4,
+                "mean_gain": -0.08681050755220034,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.5334514842711564
+              },
+              "bl_peers": {
+                "n_common": 11285,
+                "n_years": 4,
+                "mean_gain": -0.08351016326359992,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.5314133805937085
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.5499
+            ],
+            [
+              2017,
+              0.5756
+            ],
+            [
+              2018,
+              0.6315
+            ],
+            [
+              2019,
+              0.6711
+            ],
+            [
+              2020,
+              0.7212
+            ],
+            [
+              2021,
+              0.6333
+            ],
+            [
+              2022,
+              0.6339
+            ],
+            [
+              2023,
+              0.6108
+            ]
+          ]
+        },
+        {
+          "id": "bl_regression",
+          "kind": "baseline",
+          "name": "Warranted multiple (Bhojraj-Lee regression)",
+          "short": "B&L regression",
+          "mechanism": null,
+          "spec": {
+            "name": "Warranted multiple (Bhojraj-Lee regression)",
+            "multiple": "EV/Sales",
+            "method": "Bhojraj-Lee warranted multiple",
+            "mode": "regression",
+            "k": null,
+            "regressors": [
+              "log_ind_multiple",
+              "ebitda_margin",
+              "roic",
+              "sales_growth_1y",
+              "rnd_intensity",
+              "debt_to_assets",
+              "log_sales",
+              "loss"
+            ],
+            "coefficients": "estimated on the prior fiscal year"
+          },
+          "explore": {
+            "recipe": "Warranted multiple (Bhojraj-Lee regression)",
+            "multiple": "EV/Sales",
+            "period": "explore",
+            "n_eligible": 10408,
+            "n_covered": 10408,
+            "coverage": 1.0,
+            "median_abs_error": 0.6743492286395816,
+            "mean_abs_error": 0.836945450716587,
+            "within_15pct": 0.11673712528823982,
+            "median_peers": 0.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 10408,
+                "n_years": 4,
+                "mean_gain": 0.3192769339214165,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5937740199846272
+              },
+              "industry_median": {
+                "n_common": 10357,
+                "n_years": 4,
+                "mean_gain": 0.10872989040946546,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.4906826301052428
+              },
+              "bl_regression": {
+                "n_common": 10408,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "bl_peers": {
+                "n_common": 10408,
+                "n_years": 4,
+                "mean_gain": 0.023727643702917016,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5329554189085319
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Warranted multiple (Bhojraj-Lee regression)",
+            "multiple": "EV/Sales",
+            "period": "validate",
+            "n_eligible": 11322,
+            "n_covered": 11322,
+            "coverage": 1.0,
+            "median_abs_error": 0.7510597386014314,
+            "mean_abs_error": 0.9208516504901822,
+            "within_15pct": 0.10916799152093269,
+            "median_peers": 0.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 11322,
+                "n_years": 4,
+                "mean_gain": 0.24237549062891336,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5570570570570571
+              },
+              "industry_median": {
+                "n_common": 11285,
+                "n_years": 4,
+                "mean_gain": 0.08681050755220034,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.4665485157288436
+              },
+              "bl_regression": {
+                "n_common": 11322,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              },
+              "bl_peers": {
+                "n_common": 11322,
+                "n_years": 4,
+                "mean_gain": 0.003088334621321811,
+                "t_stat": NaN,
+                "share_years_better": 0.75,
+                "share_firms_better": 0.5109521285991874
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.6286
+            ],
+            [
+              2017,
+              0.6224
+            ],
+            [
+              2018,
+              0.7194
+            ],
+            [
+              2019,
+              0.7476
+            ],
+            [
+              2020,
+              0.7856
+            ],
+            [
+              2021,
+              0.7866
+            ],
+            [
+              2022,
+              0.7138
+            ],
+            [
+              2023,
+              0.7214
+            ]
+          ]
+        },
+        {
+          "id": "bl_peers",
+          "kind": "baseline",
+          "name": "Warranted-multiple peers (Bhojraj-Lee, k=8)",
+          "short": "B&L peers",
+          "mechanism": null,
+          "spec": {
+            "name": "Warranted-multiple peers (Bhojraj-Lee, k=8)",
+            "multiple": "EV/Sales",
+            "method": "Bhojraj-Lee warranted multiple",
+            "mode": "peers",
+            "k": 8,
+            "regressors": [
+              "log_ind_multiple",
+              "ebitda_margin",
+              "roic",
+              "sales_growth_1y",
+              "rnd_intensity",
+              "debt_to_assets",
+              "log_sales",
+              "loss"
+            ],
+            "coefficients": "estimated on the prior fiscal year"
+          },
+          "explore": {
+            "recipe": "Warranted-multiple peers (Bhojraj-Lee, k=8)",
+            "multiple": "EV/Sales",
+            "period": "explore",
+            "n_eligible": 10408,
+            "n_covered": 10408,
+            "coverage": 1.0,
+            "median_abs_error": 0.6913373776995289,
+            "mean_abs_error": 0.860688407213713,
+            "within_15pct": 0.11529592621060722,
+            "median_peers": 8.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 10408,
+                "n_years": 4,
+                "mean_gain": 0.29554929021849946,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5810914681014604
+              },
+              "industry_median": {
+                "n_common": 10357,
+                "n_years": 4,
+                "mean_gain": 0.08502956126826733,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.4700202761417399
+              },
+              "bl_regression": {
+                "n_common": 10408,
+                "n_years": 4,
+                "mean_gain": -0.023727643702917016,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.4670445810914681
+              },
+              "bl_peers": {
+                "n_common": 10408,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Warranted-multiple peers (Bhojraj-Lee, k=8)",
+            "multiple": "EV/Sales",
+            "period": "validate",
+            "n_eligible": 11322,
+            "n_covered": 11322,
+            "coverage": 1.0,
+            "median_abs_error": 0.7626785401481679,
+            "mean_abs_error": 0.924431724289538,
+            "within_15pct": 0.10854972619678502,
+            "median_peers": 8.0,
+            "fallback_share": 0.0,
+            "vs": {
+              "market_median": {
+                "n_common": 11322,
+                "n_years": 4,
+                "mean_gain": 0.23928715600759154,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5499911676382264
+              },
+              "industry_median": {
+                "n_common": 11285,
+                "n_years": 4,
+                "mean_gain": 0.08351016326359992,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.46858661940629154
+              },
+              "bl_regression": {
+                "n_common": 11322,
+                "n_years": 4,
+                "mean_gain": -0.003088334621321811,
+                "t_stat": NaN,
+                "share_years_better": 0.25,
+                "share_firms_better": 0.4890478714008126
+              },
+              "bl_peers": {
+                "n_common": 11322,
+                "n_years": 4,
+                "mean_gain": 0.0,
+                "t_stat": NaN,
+                "share_years_better": 0.0,
+                "share_firms_better": 0.0
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.6493
+            ],
+            [
+              2017,
+              0.6368
+            ],
+            [
+              2018,
+              0.7257
+            ],
+            [
+              2019,
+              0.7726
+            ],
+            [
+              2020,
+              0.8107
+            ],
+            [
+              2021,
+              0.7649
+            ],
+            [
+              2022,
+              0.7381
+            ],
+            [
+              2023,
+              0.7349
+            ]
+          ]
+        },
+        {
+          "id": "recipe_0",
+          "kind": "recipe",
+          "name": "Margin-matched sales peers",
+          "short": "Margin + growth",
+          "mechanism": "EV/Sales mostly prices future margins, so peers should match on margin first and growth second.",
+          "spec": {
+            "name": "Margin-matched sales peers",
+            "multiple": "EV/Sales",
+            "filters": [
+              {
+                "same": "industry_l3"
+              }
+            ],
+            "rank": {
+              "ebitda_margin": 0.6,
+              "sales_growth_3y": 0.4
+            },
+            "k": 8,
+            "agg": "median",
+            "min_peers": 3,
+            "fallback": [
+              [
+                {
+                  "same": "industry_l2"
+                }
+              ]
+            ]
+          },
+          "explore": {
+            "recipe": "Margin-matched sales peers",
+            "multiple": "EV/Sales",
+            "period": "explore",
+            "n_eligible": 10408,
+            "n_covered": 10327,
+            "coverage": 0.992217524980784,
+            "median_abs_error": 0.5103749731784228,
+            "mean_abs_error": 0.8057152097104332,
+            "within_15pct": 0.17071753655466254,
+            "median_peers": 8.0,
+            "fallback_share": 0.06933281688776992,
+            "vs": {
+              "market_median": {
+                "n_common": 10327,
+                "n_years": 4,
+                "mean_gain": 0.34473550798448266,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.6326135373293309
+              },
+              "industry_median": {
+                "n_common": 10327,
+                "n_years": 4,
+                "mean_gain": 0.13292784561700768,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.47903553791033215
+              },
+              "bl_regression": {
+                "n_common": 10327,
+                "n_years": 4,
+                "mean_gain": 0.0270416896930137,
+                "t_stat": NaN,
+                "share_years_better": 0.5,
+                "share_firms_better": 0.5681223975985281
+              },
+              "bl_peers": {
+                "n_common": 10327,
+                "n_years": 4,
+                "mean_gain": 0.051299039545846456,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5811949259223395
+              }
+            }
+          },
+          "validate": {
+            "recipe": "Margin-matched sales peers",
+            "multiple": "EV/Sales",
+            "period": "validate",
+            "n_eligible": 11322,
+            "n_covered": 11244,
+            "coverage": 0.9931107578166402,
+            "median_abs_error": 0.6048228799293658,
+            "mean_abs_error": 0.9087876547849715,
+            "within_15pct": 0.1406972607612949,
+            "median_peers": 8.0,
+            "fallback_share": 0.07977588046958378,
+            "vs": {
+              "market_median": {
+                "n_common": 11244,
+                "n_years": 4,
+                "mean_gain": 0.255487190683342,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5977410174315191
+              },
+              "industry_median": {
+                "n_common": 11244,
+                "n_years": 4,
+                "mean_gain": 0.09969989488414732,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.46122376378512986
+              },
+              "bl_regression": {
+                "n_common": 11244,
+                "n_years": 4,
+                "mean_gain": 0.012683239299576776,
+                "t_stat": NaN,
+                "share_years_better": 0.75,
+                "share_firms_better": 0.5584311632870864
+              },
+              "bl_peers": {
+                "n_common": 11244,
+                "n_years": 4,
+                "mean_gain": 0.015459062158558442,
+                "t_stat": NaN,
+                "share_years_better": 1.0,
+                "share_firms_better": 0.5566524368552117
+              }
+            }
+          },
+          "yearly": [
+            [
+              2016,
+              0.4226
+            ],
+            [
+              2017,
+              0.4479
+            ],
+            [
+              2018,
+              0.6038
+            ],
+            [
+              2019,
+              0.6221
+            ],
+            [
+              2020,
+              0.6389
+            ],
+            [
+              2021,
+              0.5881
+            ],
+            [
+              2022,
+              0.5959
+            ],
+            [
+              2023,
+              0.5955
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

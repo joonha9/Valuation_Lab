@@ -1,0 +1,288 @@
+[
+ {
+  "id": "g04-01",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:33:48",
+  "name": "g04-01 EBITDA drivers, leverage weighted up",
+  "mechanism": "EV/EBITDA splits exactly into market cap/EBITDA plus net debt/EBITDA, so net leverage is a direct part of the multiple and also moves the tax shield and discount rate. Adding net debt to EBITDA helped the best rule; doubling its weight tightens the match on this part of the multiple while keeping the growth, reinvestment, return and margin drivers.",
+  "prediction": "Median error at or below 0.309 (the best EV/EBITDA rule so far) and beats the industry median in at least 3 of 4 years.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [],
+   "rank": {
+    "capex_intensity": 2,
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "gross_margin": 1,
+    "ebitda_margin": 1,
+    "rnd_intensity": 1,
+    "asset_turnover": 1,
+    "net_debt_to_ebitda": 2
+   },
+   "k": 20,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "hash": "2c0b8bdfaa",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "g04-01 EBITDA drivers, leverage weighted up",
+   "multiple": "EV/EBITDA",
+   "filters": [],
+   "rank": {
+    "capex_intensity": 2,
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "gross_margin": 1,
+    "ebitda_margin": 1,
+    "rnd_intensity": 1,
+    "asset_turnover": 1,
+    "net_debt_to_ebitda": 2
+   },
+   "k": 20,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "compact": "EV/EBITDA | rank capex_intensity 2, sales_growth_1y 1, roic 1, gross_margin 1, ebitda_margin 1, rnd_intensity 1, asset_turnover 1, net_debt_to_ebitda 2 | k=20, median, min_peers=5"
+ },
+ {
+  "id": "g04-02",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:33:48",
+  "name": "g04-02 EBITDA drivers plus D&A share",
+  "mechanism": "The gap between EBITDA margin and EBIT margin is depreciation and amortization per dollar of sales, a measure of how much past capital spending EBITDA leaves out. Firms whose EBITDA is largely eaten by D&A turn less of it into lasting cash flow and should trade at lower EV/EBITDA, so matching EBIT margin next to EBITDA margin lines up capital consumption that capex in a single year can miss.",
+  "prediction": "Median error below 0.320 and beats the industry median in at least 3 of 4 years.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [],
+   "rank": {
+    "capex_intensity": 2,
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "gross_margin": 1,
+    "ebitda_margin": 1,
+    "ebit_margin": 1,
+    "rnd_intensity": 1,
+    "asset_turnover": 1,
+    "net_debt_to_ebitda": 1
+   },
+   "k": 20,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "hash": "c4fd62abd6",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "g04-02 EBITDA drivers plus D&A share",
+   "multiple": "EV/EBITDA",
+   "filters": [],
+   "rank": {
+    "capex_intensity": 2,
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "gross_margin": 1,
+    "ebitda_margin": 1,
+    "ebit_margin": 1,
+    "rnd_intensity": 1,
+    "asset_turnover": 1,
+    "net_debt_to_ebitda": 1
+   },
+   "k": 20,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "compact": "EV/EBITDA | rank capex_intensity 2, sales_growth_1y 1, roic 1, gross_margin 1, ebitda_margin 1, ebit_margin 1, rnd_intensity 1, asset_turnover 1, net_debt_to_ebitda 1 | k=20, median, min_peers=5"
+ },
+ {
+  "id": "g04-03",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:33:48",
+  "name": "g04-03 EBITDA drivers, capital needs weighted up",
+  "mechanism": "Asset turnover measures all the capital (working capital and fixed assets) tied up per dollar of sales, so together with capex intensity it sets how much EBITDA must be reinvested to grow. Adding turnover improved the best rule, so giving it the same weight as capex should match the full reinvestment burden that EV/EBITDA prices.",
+  "prediction": "Median error below 0.320 and beats the industry median in all 4 years.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [],
+   "rank": {
+    "capex_intensity": 2,
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "gross_margin": 1,
+    "ebitda_margin": 1,
+    "rnd_intensity": 1,
+    "asset_turnover": 2,
+    "net_debt_to_ebitda": 1
+   },
+   "k": 20,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "hash": "b64f48ca81",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "g04-03 EBITDA drivers, capital needs weighted up",
+   "multiple": "EV/EBITDA",
+   "filters": [],
+   "rank": {
+    "capex_intensity": 2,
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "gross_margin": 1,
+    "ebitda_margin": 1,
+    "rnd_intensity": 1,
+    "asset_turnover": 2,
+    "net_debt_to_ebitda": 1
+   },
+   "k": 20,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "compact": "EV/EBITDA | rank capex_intensity 2, sales_growth_1y 1, roic 1, gross_margin 1, ebitda_margin 1, rnd_intensity 1, asset_turnover 2, net_debt_to_ebitda 1 | k=20, median, min_peers=5"
+ },
+ {
+  "id": "g04-04",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:33:48",
+  "name": "g04-04 EV/Sales margin-turnover plus leverage",
+  "mechanism": "EV/Sales equals market cap/sales plus net debt/sales, and net debt to EBITDA times EBITDA margin gives the net debt part directly, so once margin is matched, matching net leverage pins down part of the multiple and the financial risk behind it. Adding it to the best margin and turnover rule should cut the error left over after profitability.",
+  "prediction": "Median error at or below 0.405 (the best EV/Sales rule so far) and beats the industry median in all 4 years.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [],
+   "rank": {
+    "ebitda_margin": 4,
+    "asset_turnover": 1.5,
+    "gross_margin": 1,
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "net_debt_to_ebitda": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "hash": "24973d3419",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "g04-04 EV/Sales margin-turnover plus leverage",
+   "multiple": "EV/Sales",
+   "filters": [],
+   "rank": {
+    "ebitda_margin": 4,
+    "asset_turnover": 1.5,
+    "gross_margin": 1,
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "net_debt_to_ebitda": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "compact": "EV/Sales | rank ebitda_margin 4, asset_turnover 1.5, gross_margin 1, sales_growth_1y 1, roic 1, net_debt_to_ebitda 1 | k=10, median, min_peers=5"
+ },
+ {
+  "id": "g04-05",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:33:48",
+  "name": "g04-05 EV/Sales with full EBITDA-multiple drivers",
+  "mechanism": "EV/Sales is EBITDA margin times EV/EBITDA, so after matching margin the remaining dispersion is the EV/EBITDA multiple itself, which the best EV/EBITDA rule explains with capex intensity and net leverage on top of growth, returns and turnover. Adding those two EV/EBITDA drivers to the margin-weighted EV/Sales match should align both factors of the sales multiple.",
+  "prediction": "Median error below 0.415 and beats the industry median in all 4 years.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [],
+   "rank": {
+    "ebitda_margin": 4,
+    "asset_turnover": 1.5,
+    "gross_margin": 1,
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "capex_intensity": 1,
+    "net_debt_to_ebitda": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "hash": "6c13e4eb5b",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "g04-05 EV/Sales with full EBITDA-multiple drivers",
+   "multiple": "EV/Sales",
+   "filters": [],
+   "rank": {
+    "ebitda_margin": 4,
+    "asset_turnover": 1.5,
+    "gross_margin": 1,
+    "sales_growth_1y": 1,
+    "roic": 1,
+    "capex_intensity": 1,
+    "net_debt_to_ebitda": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "compact": "EV/Sales | rank ebitda_margin 4, asset_turnover 1.5, gross_margin 1, sales_growth_1y 1, roic 1, capex_intensity 1, net_debt_to_ebitda 1 | k=10, median, min_peers=5"
+ },
+ {
+  "id": "g04-06",
+  "generation": 4,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:33:48",
+  "name": "g04-06 EV/Sales margin-turnover plus EBIT margin",
+  "mechanism": "Two firms with equal EBITDA margins can have very different EBIT margins if one must spend heavily on depreciating assets, so value per dollar of sales depends on the margin that survives capital consumption. Adding EBIT margin to the margin and turnover match separates asset-light firms from capital-heavy ones with the same EBITDA margin.",
+  "prediction": "Median error below 0.415 and beats the industry median in all 4 years.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [],
+   "rank": {
+    "ebitda_margin": 4,
+    "ebit_margin": 1,
+    "asset_turnover": 1.5,
+    "gross_margin": 1,
+    "sales_growth_1y": 1,
+    "roic": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "hash": "d5ed3f913e",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "g04-06 EV/Sales margin-turnover plus EBIT margin",
+   "multiple": "EV/Sales",
+   "filters": [],
+   "rank": {
+    "ebitda_margin": 4,
+    "ebit_margin": 1,
+    "asset_turnover": 1.5,
+    "gross_margin": 1,
+    "sales_growth_1y": 1,
+    "roic": 1
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": []
+  },
+  "compact": "EV/Sales | rank ebitda_margin 4, ebit_margin 1, asset_turnover 1.5, gross_margin 1, sales_growth_1y 1, roic 1 | k=10, median, min_peers=5"
+ }
+]

@@ -1,0 +1,748 @@
+{
+ "frozen_at": "2026-11-02T22:29:47",
+ "rule": {
+  "description": "Among graded recipes with exploration coverage >= 95% that beat the industry median in at least 3 of 4 exploration years, pick the one with the lowest exploration median |error| for each multiple.",
+  "min_coverage": 0.95,
+  "min_years_beating_industry": 3,
+  "top_n_per_multiple": 1
+ },
+ "multiples": {
+  "EV/EBITDA": [
+   {
+    "source": "agent",
+    "id": "g04-01",
+    "name": "L2 industry, profitability-growth-leverage nearest EBITDA peers",
+    "mechanism": "Within a broad industry, EV/EBITDA is driven by expected growth, the quality and durability of margins, and risk. Picking the nearest neighbours on growth, EBITDA margin, leverage and size inside the 2-digit sector holds technology and cyclicality roughly fixed while matching the value drivers that differ across firms in the same sector.",
+    "compact": "EV/EBITDA | screen same industry_l2 | rank sales_growth_1y 1, ebitda_margin 1, net_debt_to_ebitda 0.75, log_sales 0.75 | k=8, median, min_peers=5 | fallback []",
+    "spec": {
+     "name": "L2 industry, profitability-growth-leverage nearest EBITDA peers",
+     "multiple": "EV/EBITDA",
+     "filters": [
+      {
+       "same": "industry_l2"
+      }
+     ],
+     "rank": {
+      "sales_growth_1y": 1.0,
+      "ebitda_margin": 1.0,
+      "net_debt_to_ebitda": 0.75,
+      "log_sales": 0.75
+     },
+     "k": 8,
+     "agg": "median",
+     "min_peers": 5,
+     "fallback": [
+      []
+     ]
+    },
+    "explore": {
+     "n_eligible": 8329,
+     "n_covered": 8329,
+     "coverage": 1.0,
+     "median_abs_error": 0.31650237533466696,
+     "mean_abs_error": 0.4813889329179364,
+     "within_15pct": 0.2612558530435827,
+     "median_peers": 8.0,
+     "fallback_share": 0.018009364869732262,
+     "gain_vs_industry_median": 0.03227842513429402,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.010554205747189372,
+     "years_beating_bl_regression": 4,
+     "gain_vs_bl_peers": 0.04174685873659719,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2016": 0.28939128378977236,
+      "2017": 0.29777744602563627,
+      "2018": 0.33781686899805696,
+      "2019": 0.36354536775683793
+     }
+    },
+    "validate": {
+     "n_eligible": 8245,
+     "n_covered": 8245,
+     "coverage": 1.0,
+     "median_abs_error": 0.3994900760970928,
+     "mean_abs_error": 0.6020339167933715,
+     "within_15pct": 0.2172225591267435,
+     "median_peers": 8.0,
+     "fallback_share": 0.018920557913887203,
+     "gain_vs_industry_median": 0.041040245541989,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.023688429672610853,
+     "years_beating_bl_regression": 3,
+     "gain_vs_bl_peers": 0.04455837198377397,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2020": 0.40681349413949,
+      "2021": 0.4074588276427453,
+      "2022": 0.39175172100828415,
+      "2023": 0.39082174473933023
+     }
+    }
+   },
+   {
+    "source": "random",
+    "id": "random-075",
+    "name": "random-075",
+    "mechanism": null,
+    "compact": "EV/EBITDA | screen same industry_l3 | rank gross_margin 0.53, net_debt_to_ebitda 0.47 | k=10, median, min_peers=3 | fallback [same industry_l2]",
+    "spec": {
+     "name": "random-075",
+     "multiple": "EV/EBITDA",
+     "filters": [
+      {
+       "same": "industry_l3"
+      }
+     ],
+     "rank": {
+      "gross_margin": 0.53,
+      "net_debt_to_ebitda": 0.47
+     },
+     "k": 10,
+     "agg": "median",
+     "min_peers": 3,
+     "fallback": [
+      [
+       {
+        "same": "industry_l2"
+       }
+      ]
+     ]
+    },
+    "explore": {
+     "n_eligible": 8329,
+     "n_covered": 8259,
+     "coverage": 0.9915956297274583,
+     "median_abs_error": 0.31328683963708087,
+     "mean_abs_error": 0.48201954060630164,
+     "within_15pct": 0.26843443516164184,
+     "median_peers": 10.0,
+     "fallback_share": 0.08233442305363846,
+     "gain_vs_industry_median": 0.03040764863371432,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.009388046462191909,
+     "years_beating_bl_regression": 4,
+     "gain_vs_bl_peers": 0.04036113988763903,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2016": 0.27906243905465045,
+      "2017": 0.29398052415291187,
+      "2018": 0.3313514320365695,
+      "2019": 0.3628859072931948
+     }
+    },
+    "validate": {
+     "n_eligible": 8245,
+     "n_covered": 8206,
+     "coverage": 0.9952698605215282,
+     "median_abs_error": 0.3997502089702277,
+     "mean_abs_error": 0.6141174402182734,
+     "within_15pct": 0.21264928101389227,
+     "median_peers": 10.0,
+     "fallback_share": 0.09456495247379966,
+     "gain_vs_industry_median": 0.02889754542562708,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.011282687324627044,
+     "years_beating_bl_regression": 1,
+     "gain_vs_bl_peers": 0.032407388980175256,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2020": 0.4153790441892448,
+      "2021": 0.39434456453464883,
+      "2022": 0.39480852583468007,
+      "2023": 0.39525665574252944
+     }
+    }
+   },
+   {
+    "source": "hand",
+    "id": "Growth and ROIC peers",
+    "name": "Growth and ROIC peers",
+    "mechanism": "Within an industry, firms with similar growth and returns on capital share the discount rate and growth expectations that set EV/EBITDA.",
+    "compact": "EV/EBITDA | screen same industry_l3 | rank sales_growth_3y 0.5, roic 0.5 | k=8, median, min_peers=3 | fallback [same industry_l2]",
+    "spec": {
+     "name": "Growth and ROIC peers",
+     "multiple": "EV/EBITDA",
+     "filters": [
+      {
+       "same": "industry_l3"
+      }
+     ],
+     "rank": {
+      "sales_growth_3y": 0.5,
+      "roic": 0.5
+     },
+     "k": 8,
+     "agg": "median",
+     "min_peers": 3,
+     "fallback": [
+      [
+       {
+        "same": "industry_l2"
+       }
+      ]
+     ]
+    },
+    "explore": {
+     "n_eligible": 8329,
+     "n_covered": 8108,
+     "coverage": 0.9734662024252612,
+     "median_abs_error": 0.32337793256042896,
+     "mean_abs_error": 0.48507181329060156,
+     "within_15pct": 0.262086827824371,
+     "median_peers": 8.0,
+     "fallback_share": 0.08954119388258511,
+     "gain_vs_industry_median": 0.010659897846506186,
+     "years_beating_industry_median": 3,
+     "gain_vs_bl_regression": -0.007668914052837006,
+     "years_beating_bl_regression": 1,
+     "gain_vs_bl_peers": 0.02195358851566019,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2016": 0.2912143897455011,
+      "2017": 0.30059987772195745,
+      "2018": 0.3452553711995719,
+      "2019": 0.3807653038065003
+     }
+    },
+    "validate": {
+     "n_eligible": 8245,
+     "n_covered": 8083,
+     "coverage": 0.980351728320194,
+     "median_abs_error": 0.4051363728735177,
+     "mean_abs_error": 0.6110897404045704,
+     "within_15pct": 0.21477174316466657,
+     "median_peers": 8.0,
+     "fallback_share": 0.10924161821106025,
+     "gain_vs_industry_median": 0.018818992219275656,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.00581208691403299,
+     "years_beating_bl_regression": 1,
+     "gain_vs_bl_peers": 0.02661268300576639,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2020": 0.4287798142154634,
+      "2021": 0.3956890390134937,
+      "2022": 0.4015264882319216,
+      "2023": 0.400096743547979
+     }
+    }
+   },
+   {
+    "source": "hand",
+    "id": "Size and margin peers",
+    "name": "Size and margin peers",
+    "mechanism": "Practitioner default: pick sector peers of similar scale and profitability.",
+    "compact": "EV/EBITDA | screen same industry_l2 | rank log_sales 0.5, ebitda_margin 0.5 | k=10, median, min_peers=3",
+    "spec": {
+     "name": "Size and margin peers",
+     "multiple": "EV/EBITDA",
+     "filters": [
+      {
+       "same": "industry_l2"
+      }
+     ],
+     "rank": {
+      "log_sales": 0.5,
+      "ebitda_margin": 0.5
+     },
+     "k": 10,
+     "agg": "median",
+     "min_peers": 3,
+     "fallback": []
+    },
+    "explore": {
+     "n_eligible": 8329,
+     "n_covered": 8261,
+     "coverage": 0.991835754592388,
+     "median_abs_error": 0.3308275233059073,
+     "mean_abs_error": 0.5001444763317311,
+     "within_15pct": 0.25251180244522453,
+     "median_peers": 10.0,
+     "fallback_share": 0.0,
+     "gain_vs_industry_median": 0.012231168870831656,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": -0.009481111070773244,
+     "years_beating_bl_regression": 0,
+     "gain_vs_bl_peers": 0.02153875689369565,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2016": 0.29288723861077226,
+      "2017": 0.3067118584912353,
+      "2018": 0.3641844938773556,
+      "2019": 0.38236152129375356
+     }
+    },
+    "validate": {
+     "n_eligible": 8245,
+     "n_covered": 8205,
+     "coverage": 0.9951485748938751,
+     "median_abs_error": 0.42560874953970734,
+     "mean_abs_error": 0.6214483645675999,
+     "within_15pct": 0.2052407068860451,
+     "median_peers": 10.0,
+     "fallback_share": 0.0,
+     "gain_vs_industry_median": 0.021363669781991605,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.003787046938879582,
+     "years_beating_bl_regression": 1,
+     "gain_vs_bl_peers": 0.024968410407624035,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2020": 0.4344948205954168,
+      "2021": 0.4322205044104911,
+      "2022": 0.415206155363853,
+      "2023": 0.41575162088055867
+     }
+    }
+   },
+   {
+    "source": "baseline",
+    "id": "market_median",
+    "name": "Market-wide median",
+    "explore": {
+     "n_eligible": 8329,
+     "n_covered": 8329,
+     "coverage": 1.0,
+     "median_abs_error": 0.38129386430201884,
+     "mean_abs_error": 0.5738105222091812,
+     "within_15pct": 0.22199543762756632,
+     "median_peers": 2146.0,
+     "fallback_share": 0.0
+    },
+    "validate": {
+     "n_eligible": 8245,
+     "n_covered": 8245,
+     "coverage": 1.0,
+     "median_abs_error": 0.4812480759076034,
+     "mean_abs_error": 0.7063424479779951,
+     "within_15pct": 0.16979987871437235,
+     "median_peers": 2095.0,
+     "fallback_share": 0.0
+    }
+   },
+   {
+    "source": "baseline",
+    "id": "industry_median",
+    "name": "Industry median (L3, fallback L2)",
+    "explore": {
+     "n_eligible": 8329,
+     "n_covered": 8262,
+     "coverage": 0.9919558170248529,
+     "median_abs_error": 0.33321519109391307,
+     "mean_abs_error": 0.5130145683027347,
+     "within_15pct": 0.25393367223432584,
+     "median_peers": 17.0,
+     "fallback_share": 0.0823045267489712
+    },
+    "validate": {
+     "n_eligible": 8245,
+     "n_covered": 8206,
+     "coverage": 0.9952698605215282,
+     "median_abs_error": 0.42649160289920973,
+     "mean_abs_error": 0.6433862721104355,
+     "within_15pct": 0.20192542042407993,
+     "median_peers": 17.0,
+     "fallback_share": 0.09419936631732878
+    }
+   },
+   {
+    "source": "baseline",
+    "id": "bl_regression",
+    "name": "Warranted multiple (Bhojraj-Lee regression)",
+    "explore": {
+     "n_eligible": 8329,
+     "n_covered": 8329,
+     "coverage": 1.0,
+     "median_abs_error": 0.3566391091302372,
+     "mean_abs_error": 0.4920159172237245,
+     "within_15pct": 0.2288389962780646,
+     "median_peers": 0.0,
+     "fallback_share": 0.0
+    },
+    "validate": {
+     "n_eligible": 8245,
+     "n_covered": 8245,
+     "coverage": 1.0,
+     "median_abs_error": 0.4689678961535648,
+     "mean_abs_error": 0.6259981514900275,
+     "within_15pct": 0.17598544572468164,
+     "median_peers": 0.0,
+     "fallback_share": 0.0
+    }
+   },
+   {
+    "source": "baseline",
+    "id": "bl_peers",
+    "name": "Warranted-multiple peers (Bhojraj-Lee, k=8)",
+    "explore": {
+     "n_eligible": 8329,
+     "n_covered": 8329,
+     "coverage": 1.0,
+     "median_abs_error": 0.37999769985369314,
+     "mean_abs_error": 0.5232768765786795,
+     "within_15pct": 0.21142994357065675,
+     "median_peers": 8.0,
+     "fallback_share": 0.0
+    },
+    "validate": {
+     "n_eligible": 8245,
+     "n_covered": 8245,
+     "coverage": 1.0,
+     "median_abs_error": 0.47813431904582876,
+     "mean_abs_error": 0.6463322197172303,
+     "within_15pct": 0.16870830806549425,
+     "median_peers": 8.0,
+     "fallback_share": 0.0
+    }
+   }
+  ],
+  "EV/Sales": [
+   {
+    "source": "agent",
+    "id": "g05-04",
+    "name": "SALES_L2_margin_band",
+    "mechanism": "EV/Sales is roughly EV/EBITDA times the EBITDA margin, so firms with very different margins cannot share a sales multiple even within one sector. A hard \u00b110-point EBITDA-margin band inside the 2-digit industry, followed by ranking on margins and growth, removes the biggest source of error in EV/Sales.",
+    "compact": "EV/Sales | screen same industry_l2, band ebitda_margin\u00b10.1 | rank ebitda_margin 3, gross_margin 1, sales_growth_1y 1 | k=8, median, min_peers=4 | fallback [band ebitda_margin\u00b10.1] -> []",
+    "spec": {
+     "name": "SALES_L2_margin_band",
+     "multiple": "EV/Sales",
+     "filters": [
+      {
+       "same": "industry_l2"
+      },
+      {
+       "band": {
+        "var": "ebitda_margin",
+        "width": 0.1
+       }
+      }
+     ],
+     "rank": {
+      "ebitda_margin": 3.0,
+      "gross_margin": 1.0,
+      "sales_growth_1y": 1.0
+     },
+     "k": 8,
+     "agg": "median",
+     "min_peers": 4,
+     "fallback": [
+      [
+       {
+        "band": {
+         "var": "ebitda_margin",
+         "width": 0.1
+        }
+       }
+      ],
+      []
+     ]
+    },
+    "explore": {
+     "n_eligible": 10408,
+     "n_covered": 10407,
+     "coverage": 0.9999039200614912,
+     "median_abs_error": 0.40037206013970716,
+     "mean_abs_error": 0.6349259336232378,
+     "within_15pct": 0.218314595945037,
+     "median_peers": 8.0,
+     "fallback_share": 0.16171807437301816,
+     "gain_vs_industry_median": 0.3108260300178034,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.20205102361873056,
+     "years_beating_bl_regression": 4,
+     "gain_vs_bl_peers": 0.22573057740163302,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2016": 0.37827720043835233,
+      "2017": 0.3686435344651092,
+      "2018": 0.4228767633702592,
+      "2019": 0.4496185027952476
+     }
+    },
+    "validate": {
+     "n_eligible": 11322,
+     "n_covered": 11321,
+     "coverage": 0.9999116763822646,
+     "median_abs_error": 0.4887558118063439,
+     "mean_abs_error": 0.7295527601139546,
+     "within_15pct": 0.17259959367547037,
+     "median_peers": 8.0,
+     "fallback_share": 0.19088419750905397,
+     "gain_vs_industry_median": 0.2783077114168624,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.19164630023339502,
+     "years_beating_bl_regression": 4,
+     "gain_vs_bl_peers": 0.19465700828542434,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2020": 0.5158726856650635,
+      "2021": 0.4864602796898223,
+      "2022": 0.47766093100852275,
+      "2023": 0.47361497189138374
+     }
+    }
+   },
+   {
+    "source": "random",
+    "id": "random-188",
+    "name": "random-188",
+    "mechanism": null,
+    "compact": "EV/Sales | screen same industry_l3 | rank ebitda_margin 0.51, ebit_margin 0.36, rnd_intensity 0.13 | k=3, harmonic_mean, min_peers=3 | fallback [same industry_l2]",
+    "spec": {
+     "name": "random-188",
+     "multiple": "EV/Sales",
+     "filters": [
+      {
+       "same": "industry_l3"
+      }
+     ],
+     "rank": {
+      "ebitda_margin": 0.51,
+      "ebit_margin": 0.36,
+      "rnd_intensity": 0.13
+     },
+     "k": 3,
+     "agg": "harmonic_mean",
+     "min_peers": 3,
+     "fallback": [
+      [
+       {
+        "same": "industry_l2"
+       }
+      ]
+     ]
+    },
+    "explore": {
+     "n_eligible": 10408,
+     "n_covered": 10357,
+     "coverage": 0.9950999231360492,
+     "median_abs_error": 0.4567803293526618,
+     "mean_abs_error": 0.7710426226173909,
+     "within_15pct": 0.19001641401950373,
+     "median_peers": 3.0,
+     "fallback_share": 0.06401467606449744,
+     "gain_vs_industry_median": 0.17396863345087968,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.06523874304141423,
+     "years_beating_bl_regression": 4,
+     "gain_vs_bl_peers": 0.08893907218261238,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2016": 0.41024464203292654,
+      "2017": 0.43092933820637375,
+      "2018": 0.4981696921540567,
+      "2019": 0.49363688519916454
+     }
+    },
+    "validate": {
+     "n_eligible": 11322,
+     "n_covered": 11285,
+     "coverage": 0.9967320261437909,
+     "median_abs_error": 0.554862446761854,
+     "mean_abs_error": 0.8831516580197969,
+     "within_15pct": 0.1587062472308374,
+     "median_peers": 3.0,
+     "fallback_share": 0.06433318564466105,
+     "gain_vs_industry_median": 0.12479824018639937,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.03798773263419904,
+     "years_beating_bl_regression": 4,
+     "gain_vs_bl_peers": 0.041288076922799455,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2020": 0.5988537039246857,
+      "2021": 0.5535861023332264,
+      "2022": 0.5345689612058967,
+      "2023": 0.5417809951666371
+     }
+    }
+   },
+   {
+    "source": "hand",
+    "id": "Margin-matched sales peers",
+    "name": "Margin-matched sales peers",
+    "mechanism": "EV/Sales mostly prices future margins, so peers should match on margin first and growth second.",
+    "compact": "EV/Sales | screen same industry_l3 | rank ebitda_margin 0.6, sales_growth_3y 0.4 | k=8, median, min_peers=3 | fallback [same industry_l2]",
+    "spec": {
+     "name": "Margin-matched sales peers",
+     "multiple": "EV/Sales",
+     "filters": [
+      {
+       "same": "industry_l3"
+      }
+     ],
+     "rank": {
+      "ebitda_margin": 0.6,
+      "sales_growth_3y": 0.4
+     },
+     "k": 8,
+     "agg": "median",
+     "min_peers": 3,
+     "fallback": [
+      [
+       {
+        "same": "industry_l2"
+       }
+      ]
+     ]
+    },
+    "explore": {
+     "n_eligible": 10408,
+     "n_covered": 10327,
+     "coverage": 0.992217524980784,
+     "median_abs_error": 0.5103749731784228,
+     "mean_abs_error": 0.8057152097104332,
+     "within_15pct": 0.17071753655466254,
+     "median_peers": 8.0,
+     "fallback_share": 0.06933281688776992,
+     "gain_vs_industry_median": 0.13292784561700768,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.0270416896930137,
+     "years_beating_bl_regression": 2,
+     "gain_vs_bl_peers": 0.051299039545846456,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2016": 0.422631177827807,
+      "2017": 0.44794919636433794,
+      "2018": 0.6038176475790858,
+      "2019": 0.6221433094043911
+     }
+    },
+    "validate": {
+     "n_eligible": 11322,
+     "n_covered": 11244,
+     "coverage": 0.9931107578166402,
+     "median_abs_error": 0.6048228799293658,
+     "mean_abs_error": 0.9087876547849715,
+     "within_15pct": 0.1406972607612949,
+     "median_peers": 8.0,
+     "fallback_share": 0.07977588046958378,
+     "gain_vs_industry_median": 0.09969989488414732,
+     "years_beating_industry_median": 4,
+     "gain_vs_bl_regression": 0.012683239299576776,
+     "years_beating_bl_regression": 3,
+     "gain_vs_bl_peers": 0.015459062158558442,
+     "years_beating_bl_peers": 4,
+     "yearly_median_abs_error": {
+      "2020": 0.6388643336724891,
+      "2021": 0.5880972367476016,
+      "2022": 0.5959203490984845,
+      "2023": 0.5954901258556338
+     }
+    }
+   },
+   {
+    "source": "baseline",
+    "id": "market_median",
+    "name": "Market-wide median",
+    "explore": {
+     "n_eligible": 10408,
+     "n_covered": 10408,
+     "coverage": 1.0,
+     "median_abs_error": 0.788130500591266,
+     "mean_abs_error": 1.156040130291606,
+     "within_15pct": 0.1037663335895465,
+     "median_peers": 2611.0,
+     "fallback_share": 0.0
+    },
+    "validate": {
+     "n_eligible": 11322,
+     "n_covered": 11322,
+     "coverage": 1.0,
+     "median_abs_error": 0.8262867115963171,
+     "mean_abs_error": 1.169157466506128,
+     "within_15pct": 0.10439851616322204,
+     "median_peers": 2871.0,
+     "fallback_share": 0.0
+    }
+   },
+   {
+    "source": "baseline",
+    "id": "industry_median",
+    "name": "Industry median (L3, fallback L2)",
+    "explore": {
+     "n_eligible": 10408,
+     "n_covered": 10357,
+     "coverage": 0.9950999231360492,
+     "median_abs_error": 0.6026835497986608,
+     "mean_abs_error": 0.9450201838704182,
+     "within_15pct": 0.1445399246886164,
+     "median_peers": 26.0,
+     "fallback_share": 0.06401467606449744
+    },
+    "validate": {
+     "n_eligible": 11322,
+     "n_covered": 11285,
+     "coverage": 0.9967320261437909,
+     "median_abs_error": 0.6504664133030382,
+     "mean_abs_error": 1.011597406892052,
+     "within_15pct": 0.13141338059370847,
+     "median_peers": 28.0,
+     "fallback_share": 0.06406734603455914
+    }
+   },
+   {
+    "source": "baseline",
+    "id": "bl_regression",
+    "name": "Warranted multiple (Bhojraj-Lee regression)",
+    "explore": {
+     "n_eligible": 10408,
+     "n_covered": 10408,
+     "coverage": 1.0,
+     "median_abs_error": 0.6743492286395816,
+     "mean_abs_error": 0.836945450716587,
+     "within_15pct": 0.11673712528823982,
+     "median_peers": 0.0,
+     "fallback_share": 0.0
+    },
+    "validate": {
+     "n_eligible": 11322,
+     "n_covered": 11322,
+     "coverage": 1.0,
+     "median_abs_error": 0.7510597386014314,
+     "mean_abs_error": 0.9208516504901822,
+     "within_15pct": 0.10916799152093269,
+     "median_peers": 0.0,
+     "fallback_share": 0.0
+    }
+   },
+   {
+    "source": "baseline",
+    "id": "bl_peers",
+    "name": "Warranted-multiple peers (Bhojraj-Lee, k=8)",
+    "explore": {
+     "n_eligible": 10408,
+     "n_covered": 10408,
+     "coverage": 1.0,
+     "median_abs_error": 0.6913373776995289,
+     "mean_abs_error": 0.860688407213713,
+     "within_15pct": 0.11529592621060722,
+     "median_peers": 8.0,
+     "fallback_share": 0.0
+    },
+    "validate": {
+     "n_eligible": 11322,
+     "n_covered": 11322,
+     "coverage": 1.0,
+     "median_abs_error": 0.7626785401481679,
+     "mean_abs_error": 0.924431724289538,
+     "within_15pct": 0.10854972619678502,
+     "median_peers": 8.0,
+     "fallback_share": 0.0
+    }
+   }
+  ]
+ },
+ "funnel": {
+  "proposed": 30,
+  "invalid": 0,
+  "duplicate": 1,
+  "rejected_by_critic": 0,
+  "graded": 29
+ },
+ "random_pool": {
+  "n": 200,
+  "n_eligible": 72
+ }
+}

@@ -1,0 +1,368 @@
+[
+ {
+  "id": "g02-01",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:27:07",
+  "name": "EBITDA_L2_growth_roic_leverage",
+  "mechanism": "In a DCF view, EV/EBITDA is driven by expected growth, return on invested capital (which sets how much EBITDA must be reinvested to grow), and risk. Within a broad 2-digit industry that shares macro exposure, the nearest neighbours on growth, ROIC, leverage and size should share the target's justified multiple more closely than an unconditioned industry median.",
+  "prediction": "Median |ln(V_est/V)| below the L3 industry-median baseline (0.333) in at least 3 of 4 exploration years, and pooled median below 0.325.",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1.0,
+    "roic": 1.0,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    []
+   ]
+  },
+  "hash": "43b8b357a8",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "EBITDA_L2_growth_roic_leverage",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l2"
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1.0,
+    "roic": 1.0,
+    "net_debt_to_ebitda": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    []
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l2 | rank sales_growth_1y 1, roic 1, net_debt_to_ebitda 0.5, log_sales 0.5 | k=10, median, min_peers=5 | fallback []"
+ },
+ {
+  "id": "g02-02",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:27:07",
+  "name": "EBITDA_L3_capex_harmonic",
+  "mechanism": "EBITDA ignores capital expenditure, so two firms with the same EBITDA but different capex needs generate different free cash flow and deserve different EV/EBITDA multiples. Matching on capex intensity and growth within a 3-digit industry, and averaging with the harmonic mean (which is the unbiased averaging of price ratios), should correct the main bias of plain industry medians.",
+  "prediction": "Pooled median error below 0.333 and mean error below 0.50 (beating the L3 industry-median mean of 0.513).",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l3"
+    }
+   ],
+   "rank": {
+    "capex_intensity": 1.5,
+    "sales_growth_1y": 1.0,
+    "log_assets": 0.5
+   },
+   "k": 8,
+   "agg": "harmonic_mean",
+   "min_peers": 4,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "b5bf3d01e0",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "EBITDA_L3_capex_harmonic",
+   "multiple": "EV/EBITDA",
+   "filters": [
+    {
+     "same": "industry_l3"
+    }
+   ],
+   "rank": {
+    "capex_intensity": 1.5,
+    "sales_growth_1y": 1.0,
+    "log_assets": 0.5
+   },
+   "k": 8,
+   "agg": "harmonic_mean",
+   "min_peers": 4,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/EBITDA | screen same industry_l3 | rank capex_intensity 1.5, sales_growth_1y 1, log_assets 0.5 | k=8, harmonic_mean, min_peers=4 | fallback [same industry_l2] -> []"
+ },
+ {
+  "id": "g02-03",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:27:07",
+  "name": "EBITDA_fundamental_neighbours_crossindustry",
+  "mechanism": "Valuation multiples are ultimately functions of growth, profitability, reinvestment needs and risk rather than SIC labels, and SIC codes misclassify many diversified or new-economy firms. Nearest neighbours on these fundamentals across the whole cross-section, with a larger k to stabilise the estimate, should capture the multiple's determinants without industry-code noise.",
+  "prediction": "Pooled median error within 0.02 of the L3 industry-median baseline (0.313-0.353) and lower mean error than the Bhojraj-Lee warranted multiple (0.492).",
+  "raw": {
+   "multiple": "EV/EBITDA",
+   "filters": [],
+   "rank": {
+    "sales_growth_1y": 1.0,
+    "roic": 1.0,
+    "capex_intensity": 1.0,
+    "gross_margin": 0.75,
+    "debt_to_assets": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 15,
+   "agg": "median",
+   "min_peers": 3,
+   "fallback": []
+  },
+  "hash": "a379f42eaf",
+  "multiple": "EV/EBITDA",
+  "spec": {
+   "name": "EBITDA_fundamental_neighbours_crossindustry",
+   "multiple": "EV/EBITDA",
+   "filters": [],
+   "rank": {
+    "sales_growth_1y": 1.0,
+    "roic": 1.0,
+    "capex_intensity": 1.0,
+    "gross_margin": 0.75,
+    "debt_to_assets": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 15,
+   "agg": "median",
+   "min_peers": 3,
+   "fallback": []
+  },
+  "compact": "EV/EBITDA | rank sales_growth_1y 1, roic 1, capex_intensity 1, gross_margin 0.75, debt_to_assets 0.5, log_sales 0.5 | k=15, median, min_peers=3"
+ },
+ {
+  "id": "g02-04",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:27:07",
+  "name": "Sales_L2_margin_matched",
+  "mechanism": "EV/Sales equals EV/EBITDA times EBITDA margin, so the dominant source of cross-firm dispersion in sales multiples is profitability. Within a 2-digit industry, peers matched primarily on EBITDA margin and secondarily on gross margin and growth should share the target's sales multiple far more closely than an industry median that mixes high- and low-margin firms.",
+  "prediction": "Beats the EV/Sales L3 industry-median baseline (0.603) in all 4 exploration years, with pooled median below 0.52.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l2"
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 3.0,
+    "gross_margin": 1.0,
+    "sales_growth_1y": 1.0,
+    "log_sales": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    []
+   ]
+  },
+  "hash": "4d78559898",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "Sales_L2_margin_matched",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l2"
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 3.0,
+    "gross_margin": 1.0,
+    "sales_growth_1y": 1.0,
+    "log_sales": 0.5
+   },
+   "k": 8,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen same industry_l2 | rank ebitda_margin 3, gross_margin 1, sales_growth_1y 1, log_sales 0.5 | k=8, median, min_peers=5 | fallback []"
+ },
+ {
+  "id": "g02-05",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:27:07",
+  "name": "Sales_margin_band_crossindustry",
+  "mechanism": "A hard band on EBITDA margin guarantees that peers convert sales into cash flow at a similar rate, which is the economic bridge from sales to value; ranking within that band on growth, gross margin and ROIC then matches the remaining multiple drivers regardless of SIC label. Fallback to wider bands keeps coverage for extreme-margin firms.",
+  "prediction": "Pooled median error below 0.55 and beats the EV/Sales industry-median baseline in at least 3 of 4 years.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.04
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1.0,
+    "gross_margin": 1.0,
+    "roic": 0.75,
+    "log_sales": 0.5
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.08
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.15
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "21a66eca7d",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "Sales_margin_band_crossindustry",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "band": {
+      "var": "ebitda_margin",
+      "width": 0.04
+     }
+    }
+   ],
+   "rank": {
+    "sales_growth_1y": 1.0,
+    "gross_margin": 1.0,
+    "roic": 0.75,
+    "log_sales": 0.5
+   },
+   "k": 10,
+   "agg": "median",
+   "min_peers": 5,
+   "fallback": [
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.08
+      }
+     }
+    ],
+    [
+     {
+      "band": {
+       "var": "ebitda_margin",
+       "width": 0.15
+      }
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen band ebitda_margin\u00b10.04 | rank sales_growth_1y 1, gross_margin 1, roic 0.75, log_sales 0.5 | k=10, median, min_peers=5 | fallback [band ebitda_margin\u00b10.08] -> [band ebitda_margin\u00b10.15] -> []"
+ },
+ {
+  "id": "g02-06",
+  "generation": 2,
+  "proposer": "claude-code-subagent",
+  "time": "2026-11-02T22:27:07",
+  "name": "Sales_L3_margin_harmonic",
+  "mechanism": "Narrow 3-digit industries share business models, cost structures and growth opportunities, and within them EBITDA margin explains most remaining variation in EV/Sales. A small, margin-matched peer set combined with the harmonic mean (robust to a few very richly valued peers) should give tight sales-multiple estimates.",
+  "prediction": "Pooled median error below 0.55 and mean error below 0.85, beating the L3 industry median on both statistics.",
+  "raw": {
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l3"
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 3.0,
+    "sales_growth_1y": 1.0,
+    "asset_turnover": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 6,
+   "agg": "harmonic_mean",
+   "min_peers": 4,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "hash": "8f43967fa5",
+  "multiple": "EV/Sales",
+  "spec": {
+   "name": "Sales_L3_margin_harmonic",
+   "multiple": "EV/Sales",
+   "filters": [
+    {
+     "same": "industry_l3"
+    }
+   ],
+   "rank": {
+    "ebitda_margin": 3.0,
+    "sales_growth_1y": 1.0,
+    "asset_turnover": 0.5,
+    "log_sales": 0.5
+   },
+   "k": 6,
+   "agg": "harmonic_mean",
+   "min_peers": 4,
+   "fallback": [
+    [
+     {
+      "same": "industry_l2"
+     }
+    ],
+    []
+   ]
+  },
+  "compact": "EV/Sales | screen same industry_l3 | rank ebitda_margin 3, sales_growth_1y 1, asset_turnover 0.5, log_sales 0.5 | k=6, harmonic_mean, min_peers=4 | fallback [same industry_l2] -> []"
+ }
+]
