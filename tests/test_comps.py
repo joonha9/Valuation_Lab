@@ -10,7 +10,7 @@ import pandas as pd
 
 from valuationlab.baselines import baselines_for
 from valuationlab.engine import apply_recipe
-from valuationlab.grader import Protocol, compare, summarize
+from valuationlab.grader import Protocol, compare, estimate, summarize
 from valuationlab.panel import build_panel
 from valuationlab.recipe import RecipeError, validate
 from valuationlab.synthetic import generate
@@ -66,6 +66,17 @@ class EngineTests(unittest.TestCase):
         est = apply_recipe(tiny_panel(), recipe).set_index("id")
         expected = 4 / (1 / 8 + 1 / 10 + 1 / 12 + 1 / 30) * 10
         self.assertAlmostEqual(est.loc["A0", "estimate"], expected)
+
+
+    def test_estimate_cache_keys_on_definition_not_name(self):
+        """Two different recipes with the same name must not share cached estimates."""
+        panel = tiny_panel()
+        a = validate({"name": "same", "multiple": "EV/EBITDA", "k": "all", "agg": "median"})
+        b = validate({"name": "same", "multiple": "EV/EBITDA", "k": "all", "agg": "harmonic_mean"})
+        ea = estimate(panel, a, [2015]).set_index("id")
+        eb = estimate(panel, b, [2015]).set_index("id")
+        self.assertAlmostEqual(ea.loc["A0", "estimate"], 110.0)
+        self.assertAlmostEqual(eb.loc["A0", "estimate"], 4 / (1 / 8 + 1 / 10 + 1 / 12 + 1 / 30) * 10)
 
 
 class PanelTests(unittest.TestCase):

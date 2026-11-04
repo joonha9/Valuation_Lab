@@ -14,6 +14,7 @@ significance.
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 
 import numpy as np
@@ -111,9 +112,13 @@ def estimate(panel: pd.DataFrame, method, years: list[int] | None = None) -> pd.
     """Estimates from a Recipe (comps engine) or any benchmark object with .apply(panel, years).
 
     Results are cached per (panel, method, years) because every recipe is compared with
-    the same baselines.
+    the same baselines. A Recipe is keyed by its full definition, not its name: two different
+    recipes that share a name must never share estimates (a name-only key did that before
+    2026-11-04 and mis-scored 16 archived recipes).
     """
-    key = (id(panel), len(panel), method.name, method.multiple, getattr(method, "mode", ""), tuple(years or ()))
+    ident = (json.dumps(method.to_dict(), sort_keys=True, default=str) if isinstance(method, Recipe)
+             else (method.name, getattr(method, "mode", ""), getattr(method, "k", "")))
+    key = (id(panel), len(panel), method.multiple, ident, tuple(years or ()))
     if key not in _CACHE:
         _CACHE[key] = apply_recipe(panel, method, years) if isinstance(method, Recipe) else method.apply(panel, years)
     return _CACHE[key]

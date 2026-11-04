@@ -525,7 +525,7 @@
       "rejected_by_critic": 16,
       "graded": 13
      },
-     "eligible": 10,
+     "eligible": 9,
      "distinct_ideas": 13,
      "multiples": {
       "EV/EBITDA": {
@@ -582,7 +582,7 @@
     "rejected_by_critic": 15.6,
     "graded": 13.6
    },
-   "eligible_mean": 11.4,
+   "eligible_mean": 11.2,
    "distinct_ideas_mean": 13.6
   },
   "neither": {
@@ -720,7 +720,7 @@
       "rejected_by_critic": 0,
       "graded": 29
      },
-     "eligible": 23,
+     "eligible": 22,
      "distinct_ideas": 23,
      "multiples": {
       "EV/EBITDA": {
@@ -777,7 +777,7 @@
     "rejected_by_critic": 0.0,
     "graded": 29.2
    },
-   "eligible_mean": 23.6,
+   "eligible_mean": 23.4,
    "distinct_ideas_mean": 25.6
   }
  },

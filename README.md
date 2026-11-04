@@ -41,6 +41,18 @@ HTML, CSS and JavaScript, generated from the results by `scripts/build_site.py`.
    no scores, approves or rejects each one. Every attempt is archived, so the search
    denominator is known. Agents ran as Claude Code subagents.
 
+## Corrections
+
+- **2026-11-04, estimate cache.** The grader cached estimates by recipe *name*, so a recipe that
+  reused an earlier recipe's name in the same process received that recipe's estimates. Re-grading
+  every archived recipe found 16 of 4,492 exploration scores affected, in runs na2–na5, nc4,
+  nn2–nn5, r3 and r5. The cache now keys on the full recipe definition (with a regression test), and
+  the 16 records were re-graded in place (the old score is kept as `explore_before_cache_fix`).
+  No finalist changed, every validation score in `final.json` was confirmed, and the multi-run
+  results are unchanged. In the ablation, two runs (na5, nn5) have one fewer eligible recipe.
+  Proposers in r3, r5 and nc4 saw a wrong score for one recipe in their archive feedback; those
+  searches are kept as they ran.
+
 ## Rules the code enforces
 
 - A firm is never its own peer, and its own market value is never an input.
