@@ -278,18 +278,18 @@ footer a{color:#fff}
     <div class="eyebrow"><span class="en">Research project · Comparable-company valuation</span><span class="ko">연구 프로젝트 · 유사기업 비교 가치평가</span></div>
     <h1><span class="en">Which companies are really comparable?</span><span class="ko">어떤 회사가 진짜 ‘비교 대상’일까?</span></h1>
     <p class="sub"><span class="en">A test bench that grades valuation rules on real data — and a first experiment in which AI agents invent and test the rules themselves.</span><span class="ko">가치평가 규칙을 실제 데이터로 공정하게 채점하는 실험실, 그리고 AI 에이전트가 직접 규칙을 만들고 검증한 첫 실험.</span></p>
-    <p class="lede en">Comparable-company analysis (“comps”) values a firm by borrowing the multiples of similar firms. Everything hinges on which firms count as similar — a judgment call that is rarely tested. ValuationLab turns that judgment into explicit rules and grades every rule on <b data-v="n.fy"></b> US firm-years, keeping the two most recent years sealed for a final test.</p>
-    <p class="lede ko">유사기업 비교법(comps)은 비슷한 회사들의 배수를 빌려 와 기업 가치를 매기는 방법입니다. 결과는 ‘어떤 회사를 비슷하다고 볼 것인가’에 달려 있지만, 이 판단은 거의 검증되지 않습니다. ValuationLab은 이 판단을 명시적인 규칙으로 바꾸고, 미국 <b data-v="n.fy"></b>개 기업-연도에서 모든 규칙을 채점합니다. 가장 최근 2년은 최종 시험용으로 봉인해 두었습니다.</p>
+    <p class="lede en">Comparable-company analysis (“comps”) values a firm by borrowing the multiples of similar firms. Everything hinges on which firms count as similar — a judgment call that is rarely tested. ValuationLab turns that judgment into explicit rules and grades every rule on <b data-v="n.fy"></b> US firm-years, keeping the two most recent years sealed for a single final test, which the AI agents’ rules passed.</p>
+    <p class="lede ko">유사기업 비교법(comps)은 비슷한 회사들의 배수를 빌려 와 기업 가치를 매기는 방법입니다. 결과는 ‘어떤 회사를 비슷하다고 볼 것인가’에 달려 있지만, 이 판단은 거의 검증되지 않습니다. ValuationLab은 이 판단을 명시적인 규칙으로 바꾸고, 미국 <b data-v="n.fy"></b>개 기업-연도에서 모든 규칙을 채점합니다. 가장 최근 2년은 마지막에 단 한 번 여는 최종 시험용으로 봉인했고, AI 에이전트의 규칙은 그 시험을 통과했습니다.</p>
     <div class="byline">
       <span>Joonha</span>
-      <span><span class="en">Data: FactSet, fiscal years 2015–2023</span><span class="ko">데이터: FactSet, 2015–2023 회계연도</span></span>
+      <span><span class="en">Data: FactSet, fiscal years 2015–2023; holdout 2024–2025</span><span class="ko">데이터: FactSet, 2015–2023 회계연도, 최종 시험 2024–2025</span></span>
       <span><span class="en">Updated</span><span class="ko">업데이트</span> <span data-v="generated"></span></span>
     </div>
     <div class="kpis">
       <div class="kpi"><div class="v" data-v="n.fy"></div><div class="l"><span class="en">firm-years graded</span><span class="ko">채점한 기업-연도</span></div></div>
       <div class="kpi"><div class="v" data-v="n.firms"></div><div class="l"><span class="en">distinct US companies, incl. since-delisted</span><span class="ko">미국 기업 수 (상장폐지 기업 포함)</span></div></div>
       <div class="kpi"><div class="v">p &lt; 0.001</div><div class="l"><span class="en">five AI-agent runs versus random search with the same budget, on both multiples</span><span class="ko">AI 에이전트 5회 실행 대 같은 예산의 무작위 탐색 (두 배수 모두)</span></div></div>
-      <div class="kpi"><div class="v">2024–25</div><div class="l"><span class="en">holdout years, sealed and not yet loaded</span><span class="ko">최종 시험 연도 (봉인, 아직 미사용)</span></div></div>
+      <div class="kpi"><div class="v">5 / 5</div><div class="l"><span class="en">runs still beat every benchmark on the sealed FY2024–25 holdout, opened once</span><span class="ko">봉인했던 FY2024–25 최종 시험(단 한 번 개봉)에서도 모든 기준을 이긴 실행</span></div></div>
     </div>
   </div>
 </div>
@@ -497,7 +497,7 @@ footer a{color:#fff}
           <span><i class="yr train"></i><span class="en">Training only (benchmark coefficients, growth history)</span><span class="ko">학습 전용 (기준 회귀계수, 성장률 이력)</span></span>
           <span><i class="yr explore"></i><span class="en">Explore: design and compare rules</span><span class="ko">탐색: 규칙 설계·비교</span></span>
           <span><i class="yr validate"></i><span class="en">Validate: check rules fixed in advance</span><span class="ko">검증: 미리 고정한 규칙 확인</span></span>
-          <span><i class="yr holdout"></i><span class="en">Holdout: sealed, opened once at the end</span><span class="ko">최종 시험: 봉인, 마지막에 한 번만 개봉</span></span>
+          <span><i class="yr holdout"></i><span class="en">Holdout: sealed until the end, opened once (Exhibit 18)</span><span class="ko">최종 시험: 끝까지 봉인, 단 한 번 개봉 (자료 18)</span></span>
         </div>
       </div>
 
@@ -626,8 +626,8 @@ footer a{color:#fff}
       <div class="sec-no">06</div>
       <div>
         <h2><span class="en">Stage 2: AI agents do the research</span><span class="ko">2단계: AI 에이전트가 직접 연구하다</span></h2>
-        <p class="en">We then handed the researcher’s job to AI agents: propose recipes with an economic reason, pass an independent referee, and learn only from exploration-year scores. <b data-v="agent.gens"></b> generations and <b data-v="agent.n"></b> proposals per run, every attempt logged — including the failures. Exhibits 12–15 show the first run in detail, Exhibit 16 tests five independent runs against random search, and Exhibit 17 removes parts of the agent to see which ones matter.</p>
-        <p class="ko">이번에는 연구자의 일을 AI 에이전트에게 맡겼습니다. 경제적 이유와 함께 레시피를 제안하고, 독립적인 심사를 통과해야 하며, 탐색 연도 점수만 보고 배웁니다. 실행마다 <b data-v="agent.gens"></b>세대, <b data-v="agent.n"></b>개를 제안했고, 모든 시도를 실패까지 기록했습니다. 자료 12–15는 첫 실행을 자세히, 자료 16은 독립 실행 5회를 무작위 탐색과 비교하고, 자료 17은 에이전트의 일부를 빼서 무엇이 중요한지 봅니다.</p>
+        <p class="en">We then handed the researcher’s job to AI agents: propose recipes with an economic reason, pass an independent referee, and learn only from exploration-year scores. <b data-v="agent.gens"></b> generations and <b data-v="agent.n"></b> proposals per run, every attempt logged — including the failures. Exhibits 12–15 show the first run in detail, Exhibit 16 tests five independent runs against random search, Exhibit 17 removes parts of the agent to see which ones matter, and Exhibit 18 is the final test on the sealed holdout years.</p>
+        <p class="ko">이번에는 연구자의 일을 AI 에이전트에게 맡겼습니다. 경제적 이유와 함께 레시피를 제안하고, 독립적인 심사를 통과해야 하며, 탐색 연도 점수만 보고 배웁니다. 실행마다 <b data-v="agent.gens"></b>세대, <b data-v="agent.n"></b>개를 제안했고, 모든 시도를 실패까지 기록했습니다. 자료 12–15는 첫 실행을 자세히, 자료 16은 독립 실행 5회를 무작위 탐색과 비교하고, 자료 17은 에이전트의 일부를 빼서 무엇이 중요한지 보며, 자료 18은 봉인했던 연도에서 치른 최종 시험입니다.</p>
       </div>
     </div>
     <div class="body">
@@ -703,6 +703,17 @@ footer a{color:#fff}
         <div class="source"><span class="en">p vs full: exact one-sided permutation test over the 252 ways to split ten runs into two groups of five. Source: FactSet; ValuationLab analysis.</span><span class="ko">전체 조건 대비 p: 실행 10개를 5개씩 두 그룹으로 나누는 252가지 경우에 대한 단측 정확 순열 검정. 출처: FactSet, ValuationLab 분석.</span></div>
       </div>
 
+      <div class="exhibit" id="hold-ex">
+        <div class="ex-head"><div>
+          <div class="ex-no"><span class="en">Exhibit 18</span><span class="ko">자료 18</span></div>
+          <div class="ex-title"><span class="en">The final test: the sealed holdout, FY2024–2025</span><span class="ko">최종 시험: 봉인했던 FY2024–2025</span></div>
+          <div class="ex-note"><span class="en">Opened once, on <span data-v="hold.date"></span>, after the comparisons and pass rules were frozen and published. Hollow dot: a run’s finalist in validation; filled dot: the same rule on the holdout. Vertical lines: benchmarks on the holdout. Grey box: where the mean of five random-search finalists lands (5–95%, 20,000 simulated searches).</span><span class="ko"><span data-v="hold.date"></span>에 단 한 번 열었고, 비교 대상과 합격 기준은 그 전에 고정해 공개했습니다. 빈 점은 실행 1회의 최종 후보가 검증 기간에 낸 오차, 채운 점은 같은 규칙의 최종 시험 오차입니다. 세로선은 최종 시험에서의 기준 방법이고, 회색 상자는 무작위 탐색 최종 후보 5개의 평균이 놓이는 범위입니다(5–95%, 시뮬레이션 2만 회).</span></div>
+        </div></div>
+        <div class="chart" id="hold-chart"></div>
+        <div class="table-wrap" style="margin-top:14px"><table id="hold-table"></table></div>
+        <div class="source"><span class="en">Pass rule, fixed in advance: “replicated” if the five runs beat the industry median and Bhojraj–Lee (sign test, 5/5 gives p = 0.031) and random search with the same budget (p &lt; 0.05). Before opening, every stored validation score was reproduced exactly with the holdout files added. Protocol: <a href="https://github.com/joonha9/Valuation_Lab/blob/main/docs/holdout_protocol.md">docs/holdout_protocol.md</a>; report: <a href="https://github.com/joonha9/Valuation_Lab/blob/main/results/holdout/REPORT.md">results/holdout/REPORT.md</a>. Source: FactSet; ValuationLab analysis.</span><span class="ko">미리 정한 합격 기준: 실행 5회가 업종 중앙값과 Bhojraj–Lee를 이기고(부호 검정, 5/5면 p = 0.031) 같은 예산의 무작위 탐색도 이기면(p &lt; 0.05) ‘재현됨’. 열기 전에 최종 시험 파일을 더한 데이터로 저장된 검증 점수를 모두 정확히 재현했습니다. 프로토콜: <a href="https://github.com/joonha9/Valuation_Lab/blob/main/docs/holdout_protocol.md">docs/holdout_protocol.md</a>, 보고서: <a href="https://github.com/joonha9/Valuation_Lab/blob/main/results/holdout/REPORT.md">results/holdout/REPORT.md</a>. 출처: FactSet, ValuationLab 분석.</span></div>
+      </div>
+
       <h3><span class="en">The two rules from the first run</span><span class="ko">첫 실행에서 찾은 두 규칙</span></h3>
       <div class="grid2" id="finalists"></div>
     </div>
@@ -724,13 +735,13 @@ footer a{color:#fff}
       <div class="take">
         <div class="ti"><div>
           <h4><span class="en">AI agents found better rules than we wrote — and it was not luck</span><span class="ko">AI 에이전트가 우리보다 나은 규칙을 찾았고, 운이 아니었다</span></h4>
-          <p class="en">Across five independent runs, the agents’ finalists averaged <b data-v="multi.EV/EBITDA.agent"></b> validation error on EV/EBITDA and <b data-v="multi.EV/Sales.agent"></b> on EV/Sales, against <b data-v="multi.EV/EBITDA.rand"></b> and <b data-v="multi.EV/Sales.rand"></b> for random search with the same budget (p &lt; 0.001 on both). Every run beat the industry median and Bhojraj–Lee on both multiples. On EV/Sales every run also beat our own recipe (<b data-v="agent.EV/Sales.hand"></b>); on EV/EBITDA the agents roughly tie with it (3 of 5 runs better), so there the gain over a thoughtful human rule is not established.</p>
-          <p class="ko">독립 실행 5회에서 에이전트 최종 후보의 평균 검증 오차는 EV/EBITDA <b data-v="multi.EV/EBITDA.agent"></b>, EV/Sales <b data-v="multi.EV/Sales.agent"></b>였습니다. 같은 시도 횟수의 무작위 탐색은 <b data-v="multi.EV/EBITDA.rand"></b>, <b data-v="multi.EV/Sales.rand"></b>였습니다(두 배수 모두 p &lt; 0.001). 모든 실행이 두 배수에서 업종 중앙값과 Bhojraj–Lee를 이겼습니다. EV/Sales에서는 모든 실행이 우리 레시피(<b data-v="agent.EV/Sales.hand"></b>)도 이겼지만, EV/EBITDA에서는 5회 중 3회만 앞서 사실상 비슷합니다. 즉 그곳에서는 잘 만든 사람의 규칙보다 낫다고 아직 말할 수 없습니다.</p>
+          <p class="en">Across five independent runs, the agents’ finalists averaged <b data-v="multi.EV/EBITDA.agent"></b> validation error on EV/EBITDA and <b data-v="multi.EV/Sales.agent"></b> on EV/Sales, against <b data-v="multi.EV/EBITDA.rand"></b> and <b data-v="multi.EV/Sales.rand"></b> for random search with the same budget (p &lt; 0.001 on both). Every run beat the industry median and Bhojraj–Lee on both multiples. On the sealed holdout years FY2024–2025, opened once under a protocol published beforehand, the same finalists averaged <b data-v="hold.EV/EBITDA.agent"></b> and <b data-v="hold.EV/Sales.agent"></b>, and every run again beat the industry median, Bhojraj–Lee and random search (p &lt; 0.0001). On EV/Sales every run also beat our own recipe (<b data-v="agent.EV/Sales.hand"></b>). On EV/EBITDA the agents tied with it in validation (3 of 5 runs better) and beat it in all five runs on the holdout, but only narrowly (<b data-v="hold.EV/EBITDA.hand"></b>), so there the gain over a thoughtful human rule is real but small.</p>
+          <p class="ko">독립 실행 5회에서 에이전트 최종 후보의 평균 검증 오차는 EV/EBITDA <b data-v="multi.EV/EBITDA.agent"></b>, EV/Sales <b data-v="multi.EV/Sales.agent"></b>였습니다. 같은 시도 횟수의 무작위 탐색은 <b data-v="multi.EV/EBITDA.rand"></b>, <b data-v="multi.EV/Sales.rand"></b>였습니다(두 배수 모두 p &lt; 0.001). 모든 실행이 두 배수에서 업종 중앙값과 Bhojraj–Lee를 이겼습니다. 미리 공개한 프로토콜에 따라 봉인했던 FY2024–2025를 단 한 번 열었을 때도, 같은 최종 후보의 평균 오차는 <b data-v="hold.EV/EBITDA.agent"></b>, <b data-v="hold.EV/Sales.agent"></b>였고 모든 실행이 다시 업종 중앙값, Bhojraj–Lee, 무작위 탐색을 이겼습니다(p &lt; 0.0001). EV/Sales에서는 모든 실행이 우리 레시피(<b data-v="agent.EV/Sales.hand"></b>)도 이겼습니다. EV/EBITDA에서는 검증 기간에 5회 중 3회만 앞서 비슷했고, 최종 시험에서는 5회 모두 앞섰지만 차이는 작습니다(<b data-v="hold.EV/EBITDA.hand"></b>). 즉 그곳에서 사람의 규칙보다 나은 점은 있지만 크지 않습니다.</p>
         </div></div>
         <div class="ti"><div>
           <h4><span class="en">The gain comes from the proposer’s knowledge, not from the loop</span><span class="ko">성과는 루프가 아니라 제안자의 지식에서 나온다</span></h4>
-          <p class="en">Removing the referee, the archive, or both did not make the finalists worse: every condition beat random search, and the no-referee condition was, if anything, slightly better (p = 0.06 in its favour). The referee mostly spent budget, rejecting 15–50% of ideas, without improving the winner. With 30 proposals per run, what matters is that the proposer already knows which firm characteristics drive multiples; feedback loops may pay off only in longer searches, which is the next test.</p>
-          <p class="ko">심사자나 기록, 또는 둘 다를 빼도 최종 후보가 나빠지지 않았습니다. 모든 조건이 무작위 탐색을 이겼고, 심사자 없는 조건이 오히려 약간 더 나았습니다(그쪽 방향 p = 0.06). 심사자는 아이디어의 15–50%를 거절해 예산만 쓰고 우승 규칙을 개선하지는 못했습니다. 실행당 제안 30개 수준에서는 제안자가 이미 어떤 기업 특성이 배수를 움직이는지 알고 있다는 점이 핵심입니다. 피드백 루프의 효과는 더 긴 탐색에서 나타날 수 있으며, 그것이 다음 시험입니다.</p>
+          <p class="en">Removing the referee, the archive, or both did not make the finalists worse: every condition beat random search, and the no-referee condition was, if anything, slightly better (p = 0.06 in its favour). The referee mostly spent budget, rejecting 15–50% of ideas, without improving the winner. With 30 proposals per run, what matters is that the proposer already knows which firm characteristics drive multiples; feedback loops may pay off only in longer searches, which is the next test. The holdout showed the same pattern: no condition was worse than the full one, and the no-referee condition was again the best (exploratory test, p = <span data-v="hold.abl_p"></span>).</p>
+          <p class="ko">심사자나 기록, 또는 둘 다를 빼도 최종 후보가 나빠지지 않았습니다. 모든 조건이 무작위 탐색을 이겼고, 심사자 없는 조건이 오히려 약간 더 나았습니다(그쪽 방향 p = 0.06). 심사자는 아이디어의 15–50%를 거절해 예산만 쓰고 우승 규칙을 개선하지는 못했습니다. 실행당 제안 30개 수준에서는 제안자가 이미 어떤 기업 특성이 배수를 움직이는지 알고 있다는 점이 핵심입니다. 피드백 루프의 효과는 더 긴 탐색에서 나타날 수 있으며, 그것이 다음 시험입니다. 최종 시험에서도 같은 모습이었습니다. 전체 조건보다 나쁜 조건은 없었고, 심사자 없는 조건이 다시 가장 좋았습니다(탐색적 검정, p = <span data-v="hold.abl_p"></span>).</p>
         </div></div>
         <div class="ti"><div>
           <h4><span class="en">Peer choice matters, and simple written rules already help</span><span class="ko">피어 선택은 중요하고, 간단한 규칙만으로도 효과가 있다</span></h4>
@@ -761,14 +772,14 @@ footer a{color:#fff}
           <li><b>Point-in-time data.</b> FactSet annual figures are as restated (e.g. Microsoft FY2017 net income after the revenue-standard change) and SIC codes are current; both leak a little hindsight.</li>
           <li><b>Mispricing.</b> Accuracy against today’s price is not the same as predicting returns; that is a separate test (Track 2).</li>
           <li><b>One model, small budgets.</b> Twenty runs of one model at 30 proposals each, compared with unguided search over the same recipe language. Whether the referee or archive helps in longer searches, or with other models, is untested.</li>
-          <li><b>The holdout.</b> FY2024–2025 remain sealed; all conclusions above may still fail there.</li>
+          <li><b>The holdout is spent.</b> FY2024–2025 were opened once (Exhibit 18). Two years are few, and they can no longer serve as an untouched test: later searches are still selected and reported on the validation years, and the next untouched test needs FY2026 data.</li>
         </ul>
         <ul class="ko">
           <li><b>통계적 유의성.</b> 검증 4년은 일관성을 보여줄 뿐 유의성은 아닙니다. 제대로 된 Newey–West 검정에는 1990년대 이후의 긴 데이터가 필요합니다.</li>
           <li><b>시점 기준 데이터.</b> FactSet 연간 수치는 나중에 수정된 값이고(예: 회계기준 변경 후 수정된 마이크로소프트 FY2017 순이익), SIC 코드는 현재 기준입니다. 둘 다 약간의 사후 정보를 담고 있습니다.</li>
           <li><b>미스프라이싱.</b> 현재 주가를 잘 맞히는 것과 미래 수익률을 예측하는 것은 다릅니다. 이는 별도의 시험(Track 2)입니다.</li>
           <li><b>한 모델, 작은 예산.</b> 한 모델로 실행당 제안 30개씩 20회 돌려, 같은 규칙 언어의 무작위 탐색과 비교했습니다. 더 긴 탐색이나 다른 모델에서 심사자·기록이 도움이 되는지는 아직 시험하지 않았습니다.</li>
-          <li><b>최종 시험.</b> FY2024–2025는 아직 봉인되어 있으며, 위 결론이 거기서 무너질 수도 있습니다.</li>
+          <li><b>최종 시험은 이미 사용했습니다.</b> FY2024–2025는 단 한 번 열었습니다(자료 18). 2년은 짧고, 이제 손대지 않은 시험으로 다시 쓸 수 없습니다. 이후 탐색은 계속 검증 연도로 고르고 보고하며, 다음의 깨끗한 시험에는 FY2026 데이터가 필요합니다.</li>
         </ul>
       </div>
     </div>
@@ -782,8 +793,8 @@ footer a{color:#fff}
       <div class="sec-no">08</div>
       <div>
         <h2><span class="en">Where this goes next</span><span class="ko">다음 단계</span></h2>
-        <p class="en">The bench is built and audited, and five agent runs beat random search. The next stages make the evidence strong enough to publish.</p>
-        <p class="ko">채점 환경은 완성·검증되었고, 에이전트 5회 실행이 무작위 탐색을 이겼습니다. 다음 단계에서는 논문이 될 만큼 증거를 단단하게 만듭니다.</p>
+        <p class="en">The bench is built and audited, five agent runs beat random search, and the result held on the sealed holdout. The next stages make the evidence strong enough to publish.</p>
+        <p class="ko">채점 환경은 완성·검증되었고, 에이전트 5회 실행이 무작위 탐색을 이겼으며, 그 결과가 봉인했던 최종 시험에서도 유지되었습니다. 다음 단계에서는 논문이 될 만큼 증거를 단단하게 만듭니다.</p>
       </div>
     </div>
     <div class="body">
@@ -793,7 +804,7 @@ footer a{color:#fff}
         <div class="card"><div class="tag"><span class="en">Peers</span><span class="ko">피어</span></div><h4><span class="en">Better industry maps</span><span class="ko">더 나은 업종 분류</span></h4><p class="en">Test business-line classifications (FactSet RBICS) and text-based industries against SIC, inside the same protocol.</p><p class="ko">같은 설계 안에서 사업 부문 기반 분류(FactSet RBICS)와 텍스트 기반 업종을 SIC와 비교합니다.</p></div>
         <div class="card"><div class="tag">Track 2</div><h4><span class="en">From accuracy to mispricing</span><span class="ko">정확도에서 미스프라이싱으로</span></h4><p class="en">Does the gap between a recipe’s value and the market price predict returns? Graded with the asset-pricing tests of the SignalLab paper.</p><p class="ko">레시피가 매긴 가치와 시장 가격의 차이가 미래 수익률을 예측할까요? SignalLab 논문의 자산가격 검정으로 채점합니다.</p></div>
         <div class="card"><div class="tag">DCF</div><h4><span class="en">Beyond multiples</span><span class="ko">배수를 넘어</span></h4><p class="en">Apply the same bench to DCF recipes: forecast rules for growth, margins and discount rates.</p><p class="ko">같은 채점 환경을 DCF 레시피(성장률·마진·할인율 예측 규칙)에 적용합니다.</p></div>
-        <div class="card"><div class="tag"><span class="en">Final</span><span class="ko">마무리</span></div><h4><span class="en">Open the holdout once</span><span class="ko">최종 시험은 한 번만</span></h4><p class="en">Freeze the winning rules, then grade them a single time on FY2024–2025 and report whatever happens.</p><p class="ko">최종 규칙을 고정한 뒤 FY2024–2025에서 단 한 번 채점하고, 결과가 어떻든 그대로 보고합니다.</p></div>
+        <div class="card"><div class="tag"><span class="en">Holdout</span><span class="ko">최종 시험</span></div><h4><span class="en">A fresh holdout in 2027</span><span class="ko">2027년의 새 최종 시험</span></h4><p class="en">FY2024–2025 are spent. FY2026 market values (June 30, 2027) give the next untouched year; every rule found before then is frozen and tested on it once.</p><p class="ko">FY2024–2025는 이미 사용했습니다. FY2026 시장가치(2027년 6월 30일)가 다음의 손대지 않은 연도이며, 그 전에 찾은 규칙은 모두 고정한 뒤 그 연도에서 한 번 시험합니다.</p></div>
       </div>
     </div>
   </div>
@@ -1282,8 +1293,69 @@ function renderAblation() {
   document.getElementById("abl-table").innerHTML = head + `<tbody>${body}</tbody>`;
 }
 
+const VERDICT = {en: {"replicated": "Replicated", "partly replicated": "Partly replicated", "not replicated": "Not replicated"},
+                 ko: {"replicated": "재현됨", "partly replicated": "부분 재현", "not replicated": "재현 안 됨"}};
+function holdoutValues(V) {
+  const H = DATA.holdout; if (!H) return;
+  V["hold.date"] = H.date;
+  for (const [m, d] of Object.entries(H.multiples)) {
+    V[`hold.${m}.agent`] = f3(d.agent_mean_holdout);
+    V[`hold.${m}.hand`] = `${f3(d.agent_mean_holdout)} vs ${f3(d.benchmarks.hand.holdout)}`;
+  }
+  V["hold.abl_p"] = H.ablation_tests.full_vs_no_critic.p_condition_better.toFixed(3);
+}
+function renderHoldout() {
+  const H = DATA.holdout;
+  if (!H) { document.getElementById("hold-ex").hidden = true; return; }
+  const host = document.getElementById("hold-chart"); host.innerHTML = "";
+  const W = host.clientWidth || 700, narrow = W < 560, labW = narrow ? 70 : 96, rowH = 134, H2 = Object.keys(H.multiples).length * rowH + 22;
+  const svg = el("svg", {viewBox: `0 0 ${W} ${H2}`, height: H2, role: "img"}, host);
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; host.appendChild(tip);
+  Object.entries(H.multiples).forEach(([m, d], k) => {
+    const y0 = 22 + k * rowH, cy = y0 + 48, b = d.benchmarks, q = d.random_search;
+    const all = d.agents.flatMap(a => [a.validate, a.holdout]).concat([q.null_p05, q.null_p95, b.industry_median.holdout, b.hand.holdout, b.bl_regression.holdout]);
+    const lo = Math.min(...all) - 0.012, hi = Math.max(...all) + 0.012, sx = v => labW + (v - lo) / (hi - lo) * (W - labW - 16);
+    const lab = el("text", {x: 0, y: cy + 4}, svg); lab.style.fill = "var(--ink)"; lab.style.fontWeight = "600"; lab.style.fontSize = "13px"; lab.textContent = m;
+    for (const v of niceTicks(lo, hi, narrow ? 3 : 5)) { el("line", {x1: sx(v), x2: sx(v), y1: y0 + 20, y2: y0 + 100, stroke: "var(--rule)"}, svg); const tx = el("text", {x: sx(v), y: y0 + 114, "text-anchor": "middle"}, svg); tx.textContent = v.toFixed(2); }
+    el("rect", {x: sx(q.null_p05), y: cy - 10, width: Math.max(2, sx(q.null_p95) - sx(q.null_p05)), height: 20, fill: "var(--paper-2)", stroke: "var(--s-mkt)", "stroke-width": 1.5, rx: 2}, svg);
+    el("line", {x1: sx(q.null_median), x2: sx(q.null_median), y1: cy - 10, y2: cy + 10, stroke: "var(--ink-2)", "stroke-width": 2}, svg);
+    const marks = [[b.hand.holdout, "var(--s-rec1)", "", LANG === "ko" ? "우리 레시피" : "our recipe"], [b.industry_median.holdout, "var(--s-ind)", "", LANG === "ko" ? "업종 중앙값" : "industry"], [b.bl_regression.holdout, "var(--s-bl)", "5 4", "B&L"]].sort((a, z) => a[0] - z[0]);
+    let prevX = -1e9, level = 0;
+    marks.forEach(([v, c, dsh, t2]) => {
+      el("line", {x1: sx(v), x2: sx(v), y1: y0 + 22, y2: y0 + 98, stroke: c, "stroke-width": 2, "stroke-dasharray": dsh}, svg);
+      level = sx(v) - prevX < (narrow ? 64 : 70) ? level + 1 : 0; prevX = sx(v);
+      const tx = el("text", {x: sx(v), y: y0 + 16 - level * 12, "text-anchor": "middle", class: "dlabel"}, svg); tx.style.fill = "var(--ink-2)"; tx.style.fontSize = "11px"; tx.textContent = t2;
+    });
+    d.agents.forEach((a, i) => {
+      const yy = cy + 22 + i * 6;
+      el("line", {x1: sx(a.validate), x2: sx(a.holdout), y1: yy, y2: yy, stroke: "var(--navy)", "stroke-width": 1, opacity: .45}, svg);
+      el("circle", {cx: sx(a.validate), cy: yy, r: 4, fill: "var(--bg)", stroke: "var(--navy)", "stroke-width": 1.5}, svg);
+      const c = el("circle", {cx: sx(a.holdout), cy: yy, r: 5.5, fill: "var(--navy)", stroke: "var(--bg)", "stroke-width": 1.5}, svg);
+      c.addEventListener("pointerenter", ev => {
+        tip.innerHTML = `<div class="h">${esc(a.run)} · ${esc(pretty(a.name))}</div><div class="r"><span>${esc(t("val"))}</span><span class="num">${f3(a.validate)}</span></div><div class="r"><span>${LANG === "ko" ? "최종 시험" : "holdout"}</span><span class="num">${f3(a.holdout)}</span></div><div class="r"><span>${LANG === "ko" ? "업종 중앙값보다 정확한 기업 비율" : "firms closer than industry"}</span><span class="num">${pct(a.share_firms_better)}</span></div>`;
+        tip.hidden = false; const rr = host.getBoundingClientRect(), x = ev.clientX - rr.left, tw = tip.offsetWidth;
+        tip.style.left = (x + 14 + tw > host.clientWidth ? x - tw - 14 : x + 14) + "px"; tip.style.top = Math.max(0, ev.clientY - rr.top - 60) + "px";
+      });
+      c.addEventListener("pointerleave", () => { tip.hidden = true; });
+    });
+    el("line", {x1: sx(d.agent_mean_holdout), x2: sx(d.agent_mean_holdout), y1: cy + 14, y2: cy + 52, stroke: "var(--navy)", "stroke-width": 3}, svg);
+  });
+  const leg = document.createElement("div"); leg.className = "chips"; leg.style.marginTop = "4px";
+  leg.innerHTML = `<span class="chip legend" aria-pressed="true" style="cursor:default"><span style="width:10px;height:10px;border-radius:50%;background:var(--navy);display:inline-block"></span>${LANG === "ko" ? "최종 시험 (세로선 = 5회 평균)" : "holdout (bar = mean of 5)"}</span>
+    <span class="chip legend" aria-pressed="true" style="cursor:default"><span style="width:10px;height:10px;border-radius:50%;border:1.5px solid var(--navy);display:inline-block"></span>${LANG === "ko" ? "같은 규칙의 검증 기간" : "same rule in validation"}</span>
+    <span class="chip legend" aria-pressed="true" style="cursor:default"><span style="width:16px;height:10px;background:var(--paper-2);border:1.5px solid var(--s-mkt);display:inline-block"></span>${LANG === "ko" ? "무작위 탐색 5회 평균" : "random search, mean of 5"}</span>`;
+  host.appendChild(leg);
+  const head = `<thead><tr><th>${LANG === "ko" ? "배수" : "Multiple"}</th><th>${LANG === "ko" ? "AI 평균: 검증 → 최종" : "AI mean: validation → holdout"}</th><th>${LANG === "ko" ? "무작위 평균 (5회)" : "Random mean (5 runs)"}</th><th>p</th><th>${LANG === "ko" ? "우리 레시피 대비" : "vs our recipe"}</th><th>${LANG === "ko" ? "업종 대비" : "vs industry"}</th><th>${LANG === "ko" ? "B&L 대비" : "vs B&L"}</th></tr></thead>`;
+  const body = Object.entries(H.multiples).map(([m, d]) => {
+    const b = k => `${d.benchmarks[k].runs_better}/${d.benchmarks[k].of}`, q = d.random_search;
+    const p = q.p_value < 0.0001 ? "&lt; 0.0001" : q.p_value.toFixed(4);
+    return `<tr class="best"><td>${esc(m)}<br><b style="font-size:12px">${esc(VERDICT[LANG][d.verdict])}</b></td><td class="num">${f3(d.agent_mean_validate)} → <b>${f3(d.agent_mean_holdout)}</b></td><td class="num">${f3(q.null_median)} <span style="color:var(--muted)">[${f3(q.null_p05)}–${f3(q.null_p95)}]</span></td><td class="num">${p}</td><td class="num">${b("hand")}</td><td class="num">${b("industry_median")}</td><td class="num">${b("bl_regression")}</td></tr>`;
+  }).join("");
+  document.getElementById("hold-table").innerHTML = head + `<tbody>${body}</tbody>`;
+}
+
 function renderAgentCharts() { renderAgentMultPicker(); renderStrip(); renderValidation(); }
-function renderAgent() { if (!DATA.agent) { document.getElementById("agent").hidden = true; return; } renderAgentFunnel(); renderAgentCharts(); renderMulti(); renderAblation(); renderFinalists(); }
+function renderAgent() { if (!DATA.agent) { document.getElementById("agent").hidden = true; return; } renderAgentFunnel(); renderAgentCharts(); renderMulti(); renderAblation(); renderHoldout(); renderFinalists(); }
 
 /* ---------- binder: numbers inside prose ---------- */
 function computeValues() {
@@ -1310,6 +1382,7 @@ function computeValues() {
   V["kpi.beats"] = `${minYrs}/${V.kpi_n}`;
   agentValues(V);
   multiValues(V);
+  holdoutValues(V);
   DATA.discovery.rows.forEach((r, i) => V[`disc.${i}`] = f3(r.median_abs_error));
   for (const ex of DATA.examples) {
     V[`ex.${ex.ticker}.actual`] = ex.actual_multiple.toFixed(1) + "×";

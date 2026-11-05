@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04",
+ "generated": "2026-11-05",
  "protocol": {
   "explore": [
    2016,
@@ -5911,6 +5911,208 @@
      }
     }
    ]
+  }
+ },
+ "holdout": {
+  "years": [
+   2024,
+   2025
+  ],
+  "date": "2026-11-05",
+  "multiples": {
+   "EV/EBITDA": {
+    "agents": [
+     {
+      "run": "r1",
+      "id": "g05-03",
+      "name": "ebitda_expensed_investment_gap",
+      "validate": 0.3936,
+      "holdout": 0.4033,
+      "share_firms_better": 0.4562
+     },
+     {
+      "run": "r2",
+      "id": "g03-04",
+      "name": "g03-04 pricing-power and reinvestment EV/EBITDA",
+      "validate": 0.3981,
+      "holdout": 0.4023,
+      "share_firms_better": 0.5187
+     },
+     {
+      "run": "r3",
+      "id": "g02-01",
+      "name": "g02-01 EBITDA sector drivers with D&A wedge",
+      "validate": 0.4064,
+      "holdout": 0.4078,
+      "share_firms_better": 0.5428
+     },
+     {
+      "run": "r4",
+      "id": "g05-01",
+      "name": "ebitda_transitory_margin_l2",
+      "validate": 0.3879,
+      "holdout": 0.3971,
+      "share_firms_better": 0.5271
+     },
+     {
+      "run": "r5",
+      "id": "g01-05",
+      "name": "ebitda_capex_conversion_within_l2",
+      "validate": 0.4112,
+      "holdout": 0.3971,
+      "share_firms_better": 0.5322
+     }
+    ],
+    "agent_mean_holdout": 0.4015,
+    "agent_mean_validate": 0.3994,
+    "benchmarks": {
+     "industry_median": {
+      "holdout": 0.445,
+      "validate": 0.4265,
+      "runs_better": 5,
+      "of": 5,
+      "sign_p": 0.0312
+     },
+     "bl_regression": {
+      "holdout": 0.4444,
+      "validate": 0.469,
+      "runs_better": 5,
+      "of": 5,
+      "sign_p": 0.0312
+     },
+     "hand": {
+      "holdout": 0.4142,
+      "validate": 0.4051,
+      "runs_better": 5,
+      "of": 5,
+      "sign_p": 0.0312
+     },
+     "random_finalist": {
+      "holdout": 0.4201,
+      "validate": 0.3998,
+      "runs_better": 5,
+      "of": 5,
+      "sign_p": 0.0312
+     }
+    },
+    "random_search": {
+     "p_value": 0.0,
+     "null_median": 0.4228,
+     "null_p05": 0.416,
+     "null_p95": 0.437
+    },
+    "verdict": "replicated",
+    "rel_validate": 0.0634,
+    "rel_holdout": 0.0977
+   },
+   "EV/Sales": {
+    "agents": [
+     {
+      "run": "r1",
+      "id": "g01-03",
+      "name": "sales_crossindustry_profitability_twins",
+      "validate": 0.4894,
+      "holdout": 0.5273,
+      "share_firms_better": 0.5958
+     },
+     {
+      "run": "r2",
+      "id": "g01-05",
+      "name": "sales_crossindustry_margin_band",
+      "validate": 0.5265,
+      "holdout": 0.4998,
+      "share_firms_better": 0.5925
+     },
+     {
+      "run": "r3",
+      "id": "g02-04",
+      "name": "g02-04 Sales economic-margin band (R&D add-back)",
+      "validate": 0.5114,
+      "holdout": 0.4886,
+      "share_firms_better": 0.5933
+     },
+     {
+      "run": "r4",
+      "id": "g03-06",
+      "name": "g03-06 margin-and-growth box across sectors (EV/Sales)",
+      "validate": 0.4694,
+      "holdout": 0.4697,
+      "share_firms_better": 0.6104
+     },
+     {
+      "run": "r5",
+      "id": "g04-04",
+      "name": "L3 margin band with nested widening",
+      "validate": 0.5118,
+      "holdout": 0.4942,
+      "share_firms_better": 0.5931
+     }
+    ],
+    "agent_mean_holdout": 0.4959,
+    "agent_mean_validate": 0.5017,
+    "benchmarks": {
+     "industry_median": {
+      "holdout": 0.6598,
+      "validate": 0.6505,
+      "runs_better": 5,
+      "of": 5,
+      "sign_p": 0.0312
+     },
+     "bl_regression": {
+      "holdout": 0.6921,
+      "validate": 0.7511,
+      "runs_better": 5,
+      "of": 5,
+      "sign_p": 0.0312
+     },
+     "hand": {
+      "holdout": 0.6223,
+      "validate": 0.6048,
+      "runs_better": 5,
+      "of": 5,
+      "sign_p": 0.0312
+     },
+     "random_finalist": {
+      "holdout": 0.5409,
+      "validate": 0.5549,
+      "runs_better": 5,
+      "of": 5,
+      "sign_p": 0.0312
+     }
+    },
+    "random_search": {
+     "p_value": 0.0,
+     "null_median": 0.5812,
+     "null_p05": 0.5541,
+     "null_p95": 0.6087
+    },
+    "verdict": "replicated",
+    "rel_validate": 0.2287,
+    "rel_holdout": 0.2484
+   }
+  },
+  "ablation": {
+   "full": 0.1731,
+   "no_critic": 0.2005,
+   "no_archive": 0.1695,
+   "neither": 0.1762
+  },
+  "ablation_tests": {
+   "full_vs_no_critic": {
+    "diff": -0.0275,
+    "p_full_better": 0.996,
+    "p_condition_better": 0.0079
+   },
+   "full_vs_no_archive": {
+    "diff": 0.0035,
+    "p_full_better": 0.3889,
+    "p_condition_better": 0.6151
+   },
+   "full_vs_neither": {
+    "diff": -0.0032,
+    "p_full_better": 0.6111,
+    "p_condition_better": 0.3929
+   }
   }
  }
 }

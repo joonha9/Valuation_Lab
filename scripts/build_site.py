@@ -3,8 +3,9 @@
     python3 scripts/build_site.py
 
 Computes every number the site shows (no hand-typed results), writes
-site/site_data.json, and injects it into site/template.html. The holdout years
-are never loaded: only data/raw/ is read.
+site/site_data.json, and injects it into site/template.html. Only data/raw/ is
+read; the one-time holdout results (FY2024-2025) are taken from
+results/holdout/holdout_results.json, written by scripts/holdout_eval.py.
 """
 
 from __future__ import annotations
@@ -95,6 +96,33 @@ def agent_block(run_dir: Path) -> dict | None:
     return {"multi": multi, "ablation": ablation, "run": run_dir.name, "frozen_at": final["frozen_at"], "rule": rule, "funnel": funnel,
             "generations": max(a["generation"] for a in agent), "attempts": attempts, "random": random_pts,
             "n_random": len(rnd), "best_of_random": best_of, "validation": table}
+
+
+HAND_FOR_SITE = {"EV/EBITDA": "Growth and ROIC peers", "EV/Sales": "Margin-matched sales peers"}
+
+
+def holdout_block() -> dict | None:
+    """The one-time holdout evaluation, as recorded (never recomputed here)."""
+    path = ROOT / "results/holdout/holdout_results.json"
+    if not path.exists():
+        return None
+    h = json.loads(path.read_text())
+    mult = {}
+    for m, d in h["multiples"].items():
+        keys = {"industry_median": "industry_median", "bl_regression": "bl_regression",
+                "hand": f"hand: {HAND_FOR_SITE[m]}", "random_finalist": "random-search finalist"}
+        mult[m] = {"agents": [{k: a[k] for k in ("run", "id", "name", "validate", "holdout")}
+                              | {"share_firms_better": a["firm_level_vs_industry_median"]["share_firms_better"]}
+                              for a in d["agents"]],
+                   "agent_mean_holdout": d["agent_mean_holdout"], "agent_mean_validate": d["agent_mean_validate"],
+                   "benchmarks": {k: {f: d["benchmarks"][src][f] for f in ("holdout", "validate", "runs_better", "of", "sign_p")}
+                                  for k, src in keys.items()},
+                   "random_search": d["random_search"], "verdict": d["verdict_H1_H3"],
+                   "rel_validate": d["decay"]["agent_rel_improvement_validate"],
+                   "rel_holdout": d["decay"]["agent_rel_improvement_holdout"]}
+    return {"years": h["years"], "date": h["finished"][:10], "multiples": mult,
+            "ablation": {c: a["mean_rel_improvement"] for c, a in h["ablation"].items()},
+            "ablation_tests": h["ablation_tests"]}
 
 
 def main() -> None:
@@ -234,6 +262,7 @@ def main() -> None:
         "coefficients": coefs,
         "audit": audit,
         "agent": agent,
+        "holdout": holdout_block(),
     }
     data = clean(data)
     site = ROOT / "site"
