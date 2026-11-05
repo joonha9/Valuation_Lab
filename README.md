@@ -8,21 +8,28 @@ themselves.
 **Project site:** https://joonha9.github.io/Valuation_Lab/ (English / 한국어). The site is plain
 HTML, CSS and JavaScript, generated from the results by `scripts/build_site.py`.
 
-## Findings (validation years FY2020–2023, median |ln(V_est / V)|, lower is better)
+## Findings (median |ln(V_est / V)|, lower is better)
 
-| Method | EV/EBITDA | EV/Sales |
-|---|---|---|
-| AI agents, mean of 5 independent runs | **0.399** | **0.502** |
-| Random search, same budget and selection rule (mean of 5) | 0.411 | 0.584 |
-| Hand-written recipe | 0.405 | 0.605 |
-| Industry median (3-digit SIC) | 0.426 | 0.650 |
-| Bhojraj–Lee (2002) warranted-multiple regression | 0.469 | 0.751 |
+| Method | EV/EBITDA validation FY2020–23 | EV/EBITDA holdout FY2024–25 | EV/Sales validation | EV/Sales holdout |
+|---|---|---|---|---|
+| AI agents, mean of 5 independent runs | **0.399** | **0.402** | **0.502** | **0.496** |
+| Random search, same budget and selection rule (mean of 5) | 0.411 | 0.423 | 0.584 | 0.581 |
+| Hand-written recipe | 0.405 | 0.414 | 0.605 | 0.622 |
+| Industry median (3-digit SIC) | 0.426 | 0.445 | 0.650 | 0.660 |
+| Bhojraj–Lee (2002) warranted-multiple regression | 0.469 | 0.444 | 0.751 | 0.692 |
 
-- Agents beat random search with the same budget on both multiples (p < 0.001), and beat the
-  industry median and Bhojraj–Lee in 5 of 5 runs.
-- Ablation (20 runs): removing the referee, the archive, or both did not hurt. At 30 proposals
-  per run, the gain comes from the proposer's prior knowledge, not from the feedback loop.
-- These are four validation years from one model; the FY2024–2025 holdout is still sealed.
+- **Holdout (FY2024–2025, opened once on 2026-11-05 under a protocol frozen and pushed beforehand):
+  replicated on both multiples.** All five runs' finalists beat the industry median, Bhojraj–Lee and
+  the hand recipe (5 of 5, sign p = 0.031), and random search with the same budget (p < 0.0001).
+  See [`results/holdout/REPORT.md`](results/holdout/REPORT.md) and
+  [`docs/holdout_protocol.md`](docs/holdout_protocol.md).
+- Validation: agents beat random search with the same budget on both multiples (p < 0.001), and beat
+  the industry median and Bhojraj–Lee in 5 of 5 runs.
+- Ablation (20 runs): removing the referee, the archive, or both did not hurt, in validation or in
+  the holdout. At 30 proposals per run, the gain comes from the proposer's prior knowledge, not from
+  the feedback loop.
+- The holdout is now spent. Later studies select and report on the validation years; the next
+  untouched test needs FY2026 data.
 
 ## How it works
 
@@ -34,7 +41,7 @@ HTML, CSS and JavaScript, generated from the results by `scripts/build_site.py`.
    applies their median multiple to the target's EBITDA or sales.
 3. **Grading.** A deterministic grader scores recipes against practitioner baselines and an
    academic benchmark (Bhojraj & Lee 2002, with prior-year coefficients).
-4. **Protocol.** Explore FY2016–2019, validate FY2020–2023, holdout FY2024–2025 (sealed).
+4. **Protocol.** Explore FY2016–2019, validate FY2020–2023, holdout FY2024–2025 (opened once, 2026-11-05).
    Finalists are picked by a rule fixed before the search, then graded on validation years once.
 5. **Agents.** Following the SignalLab design (Liu, Liu, Liu & Mei 2026), a proposer agent writes
    recipes with a mechanism and a falsifiable prediction. A separate referee agent, which sees
